@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <th>Nama Produk</th>
                                     <th>Jumlah</th>
                                     <th>Harga</th>
-                                    <th>Sub Total</th>
+                                    <th colspan="2">Sub Total</th>
                                 </tr>
 
                                 <?php
@@ -58,9 +58,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <tr>
                                         <td align="center"><?php echo $no++ ?></td>
                                         <td><?php echo $items['name'] ?></td>
-                                        <td align="center"><?php echo $items['qty'] ?></td>
+                                        <td><br>
+                                            <input type="number" class="form-control text-center" id="qty" min="1" name="qty" value="<?= number_format($items['qty']) ?>" onchange="update_cart(this.value, '<?= $items['rowid'] ?>')">
+                                        </td>
                                         <td align="right">Rp. <?php echo number_format($items['price'], 0, ',', '.') ?></td>
                                         <td align="right">Rp. <?php echo number_format($items['subtotal'], 0, ',', '.') ?></td>
+                                        <td align="center"><a href="<?= base_url('pelayan/c_pelayan/hapus_items/' . $items['rowid']) ?>"><i class="fa fa-close btn btn-danger"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
 
@@ -71,9 +74,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </table>
                         </div>
                         <div class="text-right">
-                            <a href="<?php echo base_url('pelayan/c_pelayan/hapus_keranjang') ?>">
-                                <div class="btn btn-sm btn-danger">Hapus Pesanan</div>
-                            </a>
+                            <?php if ($this->cart->contents() != NULL) : ?>
+                                <a href="<?php echo base_url('pelayan/c_pelayan/hapus_keranjang') ?>">
+                                    <div class="btn btn-sm btn-danger hapus-keranjang">Hapus Pesanan</div>
+                                </a>
+                            <?php endif; ?>
                             <a href="<?php echo base_url('pelayan/c_pelayan/data_makanan') ?>">
                                 <div class="btn btn-sm btn-primary">Tambah Pesanan</div>
                             </a>
@@ -97,6 +102,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- jQuery -->
     <?php $this->load->view('_templates_pelayan/js') ?>
+    <script>
+        function update_cart(qty, kodeProduk) {
+            $.ajax({
+                url: "<?= base_url('pelayan/c_pelayan/update_keranjang') ?>",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    qty: qty,
+                    kode: kodeProduk
+                },
+                success: function(result) {
+                    // console.log(result)
+                    location.reload()
+                }
+            })
+        }
+
+        $('.hapus-keranjang').on('click', function(e) {
+            e.preventDefault();
+            const hapus = $(this).attr('href')
+
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Keranjang anda akan di HAPUS!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus Keranjang!',
+                cancelButtonText: 'Tidak, batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.location.href = hapus
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

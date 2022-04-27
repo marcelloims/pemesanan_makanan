@@ -22,10 +22,48 @@ class C_admin extends CI_Controller
 
     public function dashboard()
     {
-        $data['total_makanan'] = $this->Model_admin->total_makanan();
-        $data['total_minuman'] = $this->Model_admin->total_minuman();
-        $data['total_karyawan'] = $this->Model_admin->total_karyawan();
-        $data['total_pesanan'] = $this->Model_admin->total_pesanan();
+        $data['total_makanan']  = $this->Model_admin->total_makanan()->num_rows();
+        $data['total_minuman']  = $this->Model_admin->total_minuman()->num_rows();
+        $data['total_karyawan'] = $this->Model_admin->total_karyawan()->num_rows();
+        $data['total_pesanan']  = $this->Model_admin->total_pesanan()->num_rows();
+
+        $data_makanan           = $this->Model_admin->data_makanan()->result();
+        $nama_makanan           = [];
+        $kode_makanan           = [];
+        foreach ($data_makanan as $data_mkn) {
+            $nama_makanan[]     = $data_mkn->nama_menu;
+            $kode_makanan[]     = $data_mkn->kode_menu;
+        }
+        $data['nama_makanan']      = $nama_makanan;
+        $data['kode_makanan']      = $kode_makanan;
+
+
+        for ($i = 0; $i < count($data['kode_makanan']); $i++) {
+            $where = ['kode' => $data['kode_makanan'][$i]];
+            $gets[]   = $this->Model_admin->total_penjualan_makanan($where, 'tb_detail_orders')->num_rows();
+        }
+        $data['total_mkn']   = $gets;
+        // var_dump($data['total_mkn']);
+        // die;
+
+        $data_minuman           = $this->Model_admin->data_minuman()->result();
+        $nama_minuman           = [];
+        $kode_minuman           = [];
+        foreach ($data_minuman as $data_mkn) {
+            $nama_minuman[]     = $data_mkn->nama_menu;
+            $kode_minuman[]     = $data_mkn->kode_menu;
+        }
+        $data['nama_minuman']      = $nama_minuman;
+        $data['kode_minuman']      = $kode_minuman;
+
+
+        for ($i = 0; $i < count($data['kode_minuman']); $i++) {
+            $where = ['kode' => $data['kode_minuman'][$i]];
+            $gets_minum[]   = $this->Model_admin->total_penjualan_minuman($where, 'tb_detail_orders')->num_rows();
+        }
+        $data['total_mmn']   = $gets_minum;
+        // var_dump($data['total_mmn']);
+        // die;
 
         $this->load->view('admin/v_dashboard', $data);
     }
@@ -78,6 +116,7 @@ class C_admin extends CI_Controller
         ];
 
         $this->Model_admin->tambah_makanan($data, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil disimpan');
         redirect('admin/c_admin/data_makanan');
     }
 
@@ -129,6 +168,7 @@ class C_admin extends CI_Controller
 
         $where = ['kode_menu' => $kode_menu];
         $this->Model_admin->update_makanan($where, $data, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil diupdate');
         redirect('admin/c_admin/data_makanan');
     }
 
@@ -136,6 +176,7 @@ class C_admin extends CI_Controller
     {
         $where = ['kode_menu' => $id];
         $this->Model_admin->delete_makanan($where, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil dihapus');
         redirect('admin/c_admin/data_makanan');
     }
 
@@ -181,6 +222,7 @@ class C_admin extends CI_Controller
         ];
 
         $this->Model_admin->tambah_minuman($data, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil disimpan');
         redirect('admin/c_admin/data_minuman');
     }
 
@@ -232,6 +274,7 @@ class C_admin extends CI_Controller
 
         $where = ['kode_menu' => $kode_menu];
         $this->Model_admin->update_minuman($where, $data, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil diupdate');
         redirect('admin/c_admin/data_minuman');
     }
 
@@ -239,6 +282,7 @@ class C_admin extends CI_Controller
     {
         $where = ['kode_menu' => $id];
         $this->Model_admin->delete_minuman($where, 'tb_menus');
+        $this->session->set_flashdata('pesan', 'Berhasil dihapus');
         redirect('admin/c_admin/data_minuman');
     }
 
@@ -261,6 +305,7 @@ class C_admin extends CI_Controller
         $where = ['no_invoice' => $id];
 
         $this->Model_admin->submit_payment($where, $data, 'tb_orders');
+        $this->session->set_flashdata('pesan', 'Pembayaran telah dilakukan');
         redirect('admin/c_admin/data_pesanan');
     }
 

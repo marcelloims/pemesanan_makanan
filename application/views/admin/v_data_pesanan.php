@@ -32,7 +32,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container">
-
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
                     <table id="example1" class="table table-hover">
                         <thead>
                             <tr align="center">
@@ -40,7 +40,6 @@
                                 <th scope="col">Tanggal Invoice</th>
                                 <th scope="col">No Invoice</th>
                                 <th scope="col">No Meja</th>
-                                <th scope="col">Pelayan</th>
                                 <th scope="col">Status Pesanan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -55,8 +54,11 @@
                                     <td align="center"><?= $psn->tanggal_invoice ?></td>
                                     <td align="center"><?= $psn->no_invoice ?></td>
                                     <td align="center"><?= $psn->meja ?></td>
-                                    <td align="center"><?= $psn->nama_pelayan ?></td>
-                                    <td align="center"><?= $psn->status_pesanan ?></td>
+                                    <?php if ($psn->status_pesanan == 'Lunas') : ?>
+                                        <td align="center"><span class="btn btn-sm btn-success"><?= $psn->status_pesanan ?></span></td>
+                                    <?php else : ?>
+                                        <td align="center"><span class="btn btn-sm btn-warning"><?= $psn->status_pesanan ?></span></td>
+                                    <?php endif; ?>
                                     <td width="150px" align="center">
                                         <a href="<?= base_url('admin/c_admin/detail_pesanan/' . $psn->no_invoice) ?>" class=" btn btn-sm btn-info"><i class="fas fa-dollar-sign"></i></a>
                                         <a href="<?= base_url('admin/c_admin/print/' . $psn->no_invoice) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
@@ -94,6 +96,17 @@
                 "autoWidth": false,
             });
         });
+
+        // Sweet Alert 2 Simpan dan Update Data
+        const simpanData = $('.flash-data').data('flashdata');
+        // console.log(simpanMember);
+        if (simpanData) {
+            Swal.fire({
+                title: 'Data Pembayaran',
+                text: simpanData,
+                icon: 'success'
+            })
+        }
     </script>
     <!-- jQuery -->
 </body>

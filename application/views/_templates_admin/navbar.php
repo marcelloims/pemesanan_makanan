@@ -24,11 +24,6 @@
                 <i class="fa fa-cogs" aria-hidden="true"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">Setting</span>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-user" aria-hidden="true"></i> Profile
-                </a>
                 <div class="dropdown-divider"></div>
                 <a href="<?= base_url('auth/c_auth/logout') ?>" class="dropdown-item">
                     <i class="fa fa-sign-out" aria-hidden="true">Logout</i>

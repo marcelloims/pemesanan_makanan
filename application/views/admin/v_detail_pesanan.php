@@ -48,7 +48,7 @@
                                     <div class="col-sm-4 invoice-col">
                                         From
                                         <address>
-                                            <strong>Warung Marcell</strong><br>
+                                            <strong>Angkringan VESKOP</strong><br>
                                             795 Folsom Ave, Suite 600<br>
                                             San Francisco, CA 94107<br>
                                             Phone: (804) 123-5432<br>
@@ -57,10 +57,7 @@
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-sm-4 invoice-col">
-                                        To
-                                        <address>
-                                            <strong>Pelanggan Setia</strong><br>
-                                        </address>
+
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-sm-4 invoice-col">

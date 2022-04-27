@@ -53,8 +53,8 @@ class Model_pelayan extends CI_Model
             'tanggal_invoice'   => date('d-M-Y'),
             'status_pesanan'    => "Dalam Proses",
             'meja'              => $meja,
-            'id_user'           => $this->session->userdata('id_user'),
-            'nama_pelayan'      => $this->session->userdata('username')
+            // 'id_user'           => $this->session->userdata('id_user'),
+            // 'nama_pelayan'      => $this->session->userdata('username')
         ];
 
         $this->db->insert('tb_orders', $pesanan);
