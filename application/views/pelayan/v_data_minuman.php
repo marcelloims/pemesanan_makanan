@@ -17,7 +17,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -31,13 +30,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				</div>
 			</div>
 			<!-- /.content-header -->
-
 			<!-- Main content -->
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-
-
 						<div class="container-fluid">
 							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
 							<div class="row">
@@ -62,8 +58,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<?php endforeach; ?>
 							</div>
 						</div>
-
-
 					</div>
 				</div>
 			</div>

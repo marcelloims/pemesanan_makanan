@@ -11,7 +11,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition sidebar-collapse layout-top-nav">
 	<div class="wrapper">
-
 		<!-- Navbar -->
 		<?php $this->load->view('_templates_pelayan/navbar') ?>
 		<!-- /.navbar -->
