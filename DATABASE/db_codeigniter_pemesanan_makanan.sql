@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jan 2021 pada 13.10
+-- Waktu pembuatan: 27 Apr 2022 pada 02.31
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -43,9 +43,15 @@ CREATE TABLE `tb_detail_orders` (
 --
 
 INSERT INTO `tb_detail_orders` (`no_invoice`, `kode`, `nama`, `meja`, `qty`, `harga`, `sub_total`) VALUES
-('ABC25012021-001', 'MKN-200121-3', 'Nasi Goreng', 3, 1, 10000, 10000),
-('ABC25012021-001', 'MKN-200121-4', 'Empek-Empel Kapal Selam', 3, 1, 25000, 25000),
-('ABC25012021-001', 'MMN-210121-1', 'Ice - Hot Tea', 3, 1, 5000, 5000);
+('ABC26042022-001', 'MMN-210121-2', 'Ice Coffee', 5, 1, 12000, 12000),
+('ABC26042022-001', 'MKN-200121-2', 'Mie Ayam', 5, 1, 12000, 12000),
+('ABC26042022-002', 'MKN-200121-2', 'Mie Ayam', 2, 1, 12000, 12000),
+('ABC26042022-002', 'MKN-200121-1', 'Kwetiao Goreng', 2, 1, 20000, 20000),
+('ABC26042022-002', 'MKN-200121-3', 'Nasi Goreng', 2, 1, 10000, 10000),
+('ABC26042022-002', 'MMN-210121-2', 'Ice Coffee', 2, 1, 12000, 12000),
+('ABC26042022-002', 'MMN-210121-1', 'Vietnam Drip', 2, 1, 10000, 10000),
+('ABC26042022-003', 'MKN-200121-2', 'Mie Ayam', 1, 1, 12000, 12000),
+('ABC26042022-003', 'MKN-200121-3', 'Nasi Goreng', 1, 2, 10000, 20000);
 
 -- --------------------------------------------------------
 
@@ -72,9 +78,8 @@ INSERT INTO `tb_menus` (`kode_menu`, `nama_menu`, `kategori`, `harga`, `deskrips
 ('MKN-200121-2', 'Mie Ayam', 'Makanan', 12000, 'Mi ayam atau bakmi ayam adalah masakan Indonesia yang terbuat dari mi kuning direbus mendidih kemudian ditaburi saus kecap khusus beserta daging ayam dan sayuran', 'Mie_Ayam.jpg', 'Ready'),
 ('MKN-200121-3', 'Nasi Goreng', 'Makanan', 10000, 'Nasi goreng adalah sebuah makanan berupa nasi yang digoreng dan diaduk dalam minyak goreng, margarin atau mentega, biasanya ditambah kecap manis, bawang merah, bawang putih, asam jawa, lada dan bumbu-bumbu lainnya, seperti telur, ayam, dan kerupuk.', 'Nasi_Goreng.jpg', 'Ready'),
 ('MKN-200121-4', 'Empek-Empel Kapal Selam', 'Makanan', 25000, 'Pempek atau empek-empek adalah makanan yang terbuat dari daging ikan yang digiling lembut yang dicampur tepung kanji atau tepung sagu, serta komposisi beberapa bahan lain seperti telur, bawang putih yang dihaluskan, penyedap rasa, dan garam', 'Pek_Empek_Kapal_Selam.jpg', 'Kosong'),
-('MKN-200121-5', 'Batagor', 'Makanan', 10000, 'Batagor merupakan jajanan khas Bandung yang mengadaptasi gaya Tionghoa-Indonesia dan kini sudah dikenal hampir di seluruh wilayah Indonesia.', 'batagor.jpg', 'Ready'),
-('MMN-210121-1', 'Ice - Hot Tea', 'Minuman', 5000, 'Es teh atau Teh es adalah teh yang didinginkan dengan es batusss', 'es_teh3.jpg', 'Ready'),
-('MMN-210121-2', 'Ice - Hot Orange', 'Minuman', 5000, 'Es jeruk atau Jeruk es adalah jeruk yang didinginkan dengan es batu yang manus', 'es_jeruk2.jpg', 'Kosong');
+('MMN-210121-1', 'Vietnam Drip', 'Minuman', 10000, 'Lorem Ipsum', 'es_teh3.jpg', 'Ready'),
+('MMN-210121-2', 'Ice Coffee', 'Minuman', 12000, 'Lorem Ipsuum', 'ice_coffee.jpg', 'Ready');
 
 -- --------------------------------------------------------
 
@@ -86,17 +91,17 @@ CREATE TABLE `tb_orders` (
   `no_invoice` varchar(25) NOT NULL,
   `tanggal_invoice` varchar(225) NOT NULL,
   `meja` int(11) NOT NULL,
-  `status_pesanan` varchar(225) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama_pelayan` varchar(25) NOT NULL
+  `status_pesanan` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_orders`
 --
 
-INSERT INTO `tb_orders` (`no_invoice`, `tanggal_invoice`, `meja`, `status_pesanan`, `id_user`, `nama_pelayan`) VALUES
-('ABC25012021-001', '25-Jan-2021', 3, 'Dalam Proses', 2, 'Marcell');
+INSERT INTO `tb_orders` (`no_invoice`, `tanggal_invoice`, `meja`, `status_pesanan`) VALUES
+('ABC26042022-001', '26-Apr-2022', 5, 'Lunas'),
+('ABC26042022-002', '26-Apr-2022', 2, 'Dalam Proses'),
+('ABC26042022-003', '26-Apr-2022', 1, 'Dalam Proses');
 
 -- --------------------------------------------------------
 
@@ -118,20 +123,7 @@ CREATE TABLE `tb_users` (
 
 INSERT INTO `tb_users` (`id_user`, `email`, `username`, `password`, `role_id`) VALUES
 (1, 'admin@gmail.com', 'admin', 'admin', 1),
-(2, 'marcelloimanuel25@gmail.com', 'Marcell', '1234', 2);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `users`
---
-
-CREATE TABLE `users` (
-  `UID` bigint(20) UNSIGNED NOT NULL,
-  `Fuid` varchar(100) NOT NULL,
-  `Ffname` varchar(60) NOT NULL,
-  `Femail` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(2, 'admin2@gmail.com', 'admin2', '1234', 2);
 
 --
 -- Indexes for dumped tables
@@ -156,12 +148,6 @@ ALTER TABLE `tb_users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`UID`);
-
---
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -170,12 +156,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `tb_users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `UID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

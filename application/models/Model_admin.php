@@ -11,24 +11,33 @@ class Model_admin extends CI_Model
 
     public function total_makanan()
     {
-        return $this->db->get_where('tb_menus', ['kategori' => 'Makanan'])->num_rows();
+        return $this->db->get_where('tb_menus', ['kategori' => 'Makanan']);
     }
 
     public function total_minuman()
     {
-        return $this->db->get_where('tb_menus', ['kategori' => 'minuman'])->num_rows();
+        return $this->db->get_where('tb_menus', ['kategori' => 'minuman']);
     }
 
     public function total_karyawan()
     {
-        return $this->db->get('tb_users')->num_rows();
+        return $this->db->get('tb_users');
     }
 
     public function total_pesanan()
     {
-        return $this->db->get_where('tb_orders')->num_rows();
+        return $this->db->get_where('tb_orders');
     }
 
+    public function total_penjualan_makanan($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+
+    public function total_penjualan_minuman($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
 
 
 

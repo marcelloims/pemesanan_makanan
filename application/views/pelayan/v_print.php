@@ -53,10 +53,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
-                                            To
-                                            <address>
-                                                <strong>Pelanggan Setia</strong><br>
-                                            </address>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">

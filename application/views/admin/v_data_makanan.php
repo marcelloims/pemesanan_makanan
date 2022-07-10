@@ -33,8 +33,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container">
-                    <!-- Button trigger modal -->
-
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-plus"> Data Makanan</i>
@@ -52,7 +51,7 @@
                                 </div>
                                 <form action="<?= base_url() ?>admin/c_admin/tambah_makanan" id="form" method="POST" enctype="multipart/form-data">
                                     <div class="modal-body">
-                                        <input type="text" name="kode_menu" value="MKN-<?php echo date('dmy') ?>-<?= $jumlah_makanan + 1 ?>">
+                                        <input type="hidden" name="kode_menu" value="MKN-<?php echo date('dmy') ?>-<?= $jumlah_makanan + 1 ?>">
                                         <div class="form-group">
                                             <label for="">Nama Makanan</label>
                                             <input type="text" class="form-control" name="nama_menu" placeholder="Nama Makanan">
@@ -108,7 +107,7 @@
                                     <td width="150px" align="center">
                                         <a href="<?= base_url('admin/c_admin/detail_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
                                         <a href="<?= base_url('admin/c_admin/edit_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                        <a href="<?= base_url('admin/c_admin/delete_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-danger" onclick="return confirm('Anda Yakin Ingin HAPUS Data ini?')"><i class="fas fa-trash"></i></a>
+                                        <a href="<?= base_url('admin/c_admin/delete_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -145,6 +144,40 @@
                 "autoWidth": false,
             });
         });
+
+        // Sweet Alert 2 Simpan dan Update Data
+        const simpanData = $('.flash-data').data('flashdata');
+        // console.log(simpanMember);
+        if (simpanData) {
+            Swal.fire({
+                title: 'Data Makanan',
+                text: simpanData,
+                icon: 'success'
+            })
+        }
+
+        // Sweet Alert 2 Hapus Data
+        $('.tombol-hapus').on('click', function(e) {
+
+            e.preventDefault();
+            const hapus = $(this).attr('href')
+
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data Makanan akan di HAPUS!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus Data Makanan!',
+                cancelButtonText: 'Tidak, batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.location.href = hapus
+                }
+            })
+
+        })
     </script>
     <!-- jQuery -->
 </body>
