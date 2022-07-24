@@ -77,11 +77,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                     <table id="example1" class="table table-hover">
                         <thead>
                             <tr align="center">
@@ -89,6 +84,7 @@
                                 <th scope="col">Kode Makanan</th>
                                 <th scope="col">Nama Makanan</th>
                                 <th scope="col">Harga</th>
+                                <th scope="col">Promo</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -103,6 +99,7 @@
                                     <td align="center"><?= $mkn->kode_menu ?></td>
                                     <td align="center"><?= $mkn->nama_menu ?></td>
                                     <td align="center">Rp. <?= number_format($mkn->harga, 0, ',', '.') ?></td>
+                                    <td align="center">Rp. <?= number_format($mkn->promo, 0, ',', '.') ?></td>
                                     <td align="center"><?= $mkn->status ?></td>
                                     <td width="150px" align="center">
                                         <a href="<?= base_url('admin/c_admin/detail_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
@@ -111,15 +108,12 @@
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-
-
                         </tbody>
                     </table>
                 </div>
             </section>
             <!-- Main content -->
         </div>
-
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
@@ -158,10 +152,8 @@
 
         // Sweet Alert 2 Hapus Data
         $('.tombol-hapus').on('click', function(e) {
-
             e.preventDefault();
             const hapus = $(this).attr('href')
-
             Swal.fire({
                 title: 'Apakah anda yakin?',
                 text: "Data Makanan akan di HAPUS!",
@@ -176,7 +168,6 @@
                     document.location.href = hapus
                 }
             })
-
         })
     </script>
     <!-- jQuery -->

@@ -46,7 +46,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="benner_logo" style="background-image: url('<?= base_url() . '/uploads/' . $mkn->foto; ?>')"></div>
                                         <div class="card-body text-center">
                                             <h6 class="card-title-center text-blue"><?= $mkn->nama_menu; ?></h6>
-                                            <p>Rp. <?= number_format($mkn->harga, 0, ',', '.') . "<br>"; ?> </p>
+                                            <?php if ($mkn->promo) : ?>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="btn btn-sm btn-secondary">
+                                                            <b><del>Rp. <?= number_format($mkn->harga, 0, ',', '.') . "<br>"; ?></del></b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="btn btn-sm btn-success">
+                                                            <b>Rp. <?= number_format($mkn->promo, 0, ',', '.') . "<br>"; ?></b>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php else : ?>
+                                                <p><b>Rp. <?= number_format($mkn->harga, 0, ',', '.') . "<br>"; ?></b></p>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="card-footer text-center bg-white">
                                             <a href="<?= base_url('pelayan/c_pelayan/detail_makanan/' . $mkn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>

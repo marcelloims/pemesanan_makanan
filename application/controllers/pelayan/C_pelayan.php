@@ -30,10 +30,16 @@ class C_pelayan extends CI_Controller
 		$this->load->view('pelayan/v_detail_makanan', $data);
 	}
 
-	public function data_minuman()
+	public function minuman_dingin()
 	{
-		$data['minuman'] = $this->Model_pelayan->data_minuman()->result();
-		$this->load->view('pelayan/v_data_minuman', $data);
+		$data['minuman'] = $this->Model_pelayan->minuman_dingin()->result();
+		$this->load->view('pelayan/v_minuman_dingin', $data);
+	}
+
+	public function minuman_panas()
+	{
+		$data['minuman'] = $this->Model_pelayan->minuman_panas()->result();
+		$this->load->view('pelayan/v_minuman_panas', $data);
 	}
 
 	public function detail_minuman($id)
@@ -47,10 +53,12 @@ class C_pelayan extends CI_Controller
 	{
 		$menu = $this->Model_pelayan->find($id);
 
+		$harga = $menu->promo == 0 ? $menu->harga : $menu->promo;
+
 		$data = [
 			'id'      => $menu->kode_menu,
 			'qty'     => 1,
-			'price'   => $menu->harga,
+			'price'   => $harga,
 			'name'    => $menu->nama_menu,
 			'kategori' => $menu->kategori
 		];
@@ -64,17 +72,21 @@ class C_pelayan extends CI_Controller
 	{
 		$menu = $this->Model_pelayan->find($id);
 
+		$harga = $menu->promo == 0 ? $menu->harga : $menu->promo;
+
 		$data = [
 			'id'      => $menu->kode_menu,
 			'qty'     => 1,
-			'price'   => $menu->harga,
+			'price'   => $harga,
 			'name'    => $menu->nama_menu,
 			'kategori' => $menu->kategori
 		];
 
 		$this->cart->insert($data);
 		$this->session->set_flashdata('pesan', 'Menu yang anda pesan telah masuk keranjang');
-		redirect('pelayan/c_pelayan/data_minuman');
+		$minuman = $menu->kategori == 'Ice' ? 'minuman_dingin' : 'minuman_panas';
+
+		redirect('pelayan/c_pelayan/' . $minuman);
 	}
 
 	public function detail_keranjang()

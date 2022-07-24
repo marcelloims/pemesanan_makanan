@@ -11,7 +11,10 @@
 				<a href="<?= base_url() ?>pelayan/c_pelayan/data_makanan" class="nav-link">Makanan</a>
 			</li>
 			<li class="nav-item">
-				<a href="<?= base_url() ?>pelayan/c_pelayan/data_minuman" class="nav-link">Minuman</a>
+				<a href="<?= base_url() ?>pelayan/c_pelayan/minuman_dingin" class="nav-link">Minuman Dingin</a>
+			</li>
+			<li class="nav-item">
+				<a href="<?= base_url() ?>pelayan/c_pelayan/minuman_panas" class="nav-link">Minuman Hangat</a>
 			</li>
 		</ul>
 

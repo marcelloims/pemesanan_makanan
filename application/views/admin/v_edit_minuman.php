@@ -47,8 +47,24 @@
                                     <input type="text" class="form-control" name="nama_menu" value="<?= $minuman->nama_menu ?>">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Kategori</label>
+                                    <select name="kategori" id="kategori" class="form-control">
+                                        <?php foreach ($kategori as $kat) : ?>
+                                            <?php if ($kat == $minuman->kategori) : ?>
+                                                <option value="<?= $kat ?>" selected><?= $kat ?></option>
+                                            <?php else : ?>
+                                                <option value="<?= $kat ?>"><?= $kat ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Harga</label>
                                     <input type="text" class="form-control" name="harga" value="<?= $minuman->harga ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Promo</label>
+                                    <input type="text" class="form-control" name="promo" value="<?= $minuman->promo ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Deskripsi</label>

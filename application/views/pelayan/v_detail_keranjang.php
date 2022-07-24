@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						</div>
 						<div class="text-right">
 							<?php if ($this->cart->contents() != NULL) : ?>
-								<a href="<?php echo base_url('pelayan/c_pelayan/hapus_keranjang') ?>">
+								<a href="<?= base_url('pelayan/c_pelayan/hapus_keranjang') ?>">
 									<div class="btn btn-sm btn-danger hapus-keranjang">Hapus Pesanan</div>
 								</a>
 							<?php endif; ?>
@@ -116,28 +116,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				}
 			})
 		}
-
-		$('.hapus-keranjang').on('click', function(e) {
-			e.preventDefault();
-			const hapus = $(this).attr('href')
-
-			console.log(hapus);
-
-			// Swal.fire({
-			// 	title: 'Apakah anda yakin?',
-			// 	text: "Keranjang anda akan di HAPUS!",
-			// 	icon: 'warning',
-			// 	showCancelButton: true,
-			// 	confirmButtonColor: '#3085d6',
-			// 	cancelButtonColor: '#d33',
-			// 	confirmButtonText: 'Ya, Hapus Keranjang!',
-			// 	cancelButtonText: 'Tidak, batalkan'
-			// }).then((result) => {
-			// 	if (result.isConfirmed) {
-			// 		document.location.href = hapus
-			// 	}
-			// })
-		})
 	</script>
 </body>
 

@@ -13,9 +13,15 @@ class Model_pelayan extends CI_Model
         return $this->db->get_where('tb_menus', ['kode_menu' => $id])->row_array();
     }
 
-    public function data_minuman()
+    public function minuman_dingin()
     {
-        $this->db->where('kategori', 'Minuman');
+        $this->db->where('kategori', 'Ice');
+        return $this->db->get('tb_menus');
+    }
+
+    public function minuman_panas()
+    {
+        $this->db->where('kategori', 'Hot');
         return $this->db->get('tb_menus');
     }
 
@@ -47,7 +53,7 @@ class Model_pelayan extends CI_Model
 
         $jumlah_pesanan = $this->db->get('tb_orders')->num_rows();
         $t = $jumlah_pesanan + 1;
-        $kode = 'ABC' . date('dmY') . '-00' . $t;
+        $kode = 'VesKop-' . $t;
         $pesanan = [
             'no_invoice'        => $kode,
             'tanggal_invoice'   => date('d-M-Y'),

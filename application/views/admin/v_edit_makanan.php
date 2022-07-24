@@ -51,6 +51,10 @@
                                     <input type="text" class="form-control" name="harga" value="<?= $makanan->harga ?>">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Promo</label>
+                                    <input type="text" class="form-control" name="promo" value="<?= $makanan->promo ?>">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Deskripsi</label>
                                     <input type="text" class="form-control" name="deskripsi" value="<?= $makanan->deskripsi ?>">
                                 </div>

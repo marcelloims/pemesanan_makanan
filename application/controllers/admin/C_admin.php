@@ -140,6 +140,7 @@ class C_admin extends CI_Controller
 		$kode_menu      = $this->input->post('kode_menu');
 		$nama_menu      = $this->input->post('nama_menu');
 		$harga          = $this->input->post('harga');
+		$promo        	= $this->input->post('promo');
 		$deskripsi      = $this->input->post('deskripsi');
 		$status         = $this->input->post('status');
 		$foto_makanan   = $_FILES['foto']['name'];
@@ -161,6 +162,7 @@ class C_admin extends CI_Controller
 			'nama_menu'         => $nama_menu,
 			'kategori'          => "Makanan",
 			'harga'             => $harga,
+			'promo'             => $promo,
 			'deskripsi'         => $deskripsi,
 			'foto'              => $foto_makanan,
 			'status'            => $status
@@ -195,6 +197,7 @@ class C_admin extends CI_Controller
 	{
 		$kode_menu      = $this->input->post('kode_menu');
 		$nama_menu      = $this->input->post('nama_menu');
+		$kategori		= $this->input->post('kategori');
 		$harga          = $this->input->post('harga');
 		$deskripsi      = $this->input->post('deskripsi');
 		$foto_makanan   = $_FILES['foto']['name'];
@@ -214,7 +217,7 @@ class C_admin extends CI_Controller
 		$data = [
 			'kode_menu'         => $kode_menu,
 			'nama_menu'         => $nama_menu,
-			'kategori'          => "Minuman",
+			'kategori'          => $kategori,
 			'harga'             => $harga,
 			'deskripsi'         => $deskripsi,
 			'foto'              => $foto_makanan,
@@ -236,8 +239,9 @@ class C_admin extends CI_Controller
 	public function edit_minuman($id)
 	{
 		$where = ['kode_menu' => $id];
-		$data['minuman'] = $this->Model_admin->edit_minuman($where, 'tb_menus');
-		$data['status'] = ['Ready', 'Kosong'];
+		$data['minuman']	= $this->Model_admin->edit_minuman($where, 'tb_menus');
+		$data['status'] 	= ['Ready', 'Kosong'];
+		$data['kategori']	= ['Ice', 'Hot'];
 		$this->load->view('admin/v_edit_minuman', $data);
 	}
 
@@ -245,7 +249,9 @@ class C_admin extends CI_Controller
 	{
 		$kode_menu      = $this->input->post('kode_menu');
 		$nama_menu      = $this->input->post('nama_menu');
+		$kategori		= $this->input->post('kategori');
 		$harga          = $this->input->post('harga');
+		$promo          = $this->input->post('promo');
 		$deskripsi      = $this->input->post('deskripsi');
 		$status         = $this->input->post('status');
 		$foto_makanan   = $_FILES['foto']['name'];
@@ -265,8 +271,9 @@ class C_admin extends CI_Controller
 		$data = [
 			'kode_menu'         => $kode_menu,
 			'nama_menu'         => $nama_menu,
-			'kategori'          => "Minuman",
+			'kategori'          => $kategori,
 			'harga'             => $harga,
+			'promo'             => $promo,
 			'deskripsi'         => $deskripsi,
 			'foto'              => $foto_makanan,
 			'status'            => $status

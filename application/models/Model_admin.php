@@ -91,7 +91,8 @@ class Model_admin extends CI_Model
 
     public function data_minuman()
     {
-        $this->db->where('kategori', 'Minuman');
+        $this->db->where('kategori', 'Ice');
+        $this->db->or_where('kategori', 'Hot');
         return $this->db->get('tb_menus');
     }
 

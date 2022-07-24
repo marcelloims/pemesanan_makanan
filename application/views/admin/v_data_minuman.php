@@ -37,7 +37,6 @@
                     <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-plus"> Data Minuman</i>
                     </button>
-
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -54,6 +53,14 @@
                                         <div class="form-group">
                                             <label for="">Nama Minuman</label>
                                             <input type="text" class="form-control" name="nama_menu" placeholder="Nama Minuman">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Kategori</label>
+                                            <select name="kategori" id="kategori" class="form-control">
+                                                <option disabled selected>Kategori Minuman</option>
+                                                <option value="Ice">Ice</option>
+                                                <option value="Hot">Hot</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Harga</label>
@@ -76,11 +83,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                     <table id="example1" class="table table-hover">
                         <thead>
                             <tr align="center">
@@ -88,6 +90,7 @@
                                 <th scope="col">Kode Makanan</th>
                                 <th scope="col">Nama Makanan</th>
                                 <th scope="col">Harga</th>
+                                <th scope="col">Promo</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -102,6 +105,7 @@
                                     <td align="center"><?= $mmn->kode_menu ?></td>
                                     <td align="center"><?= $mmn->nama_menu ?></td>
                                     <td align="center">Rp. <?= number_format($mmn->harga, 0, ',', '.') ?></td>
+                                    <td align="center">Rp. <?= number_format($mmn->promo, 0, ',', '.') ?></td>
                                     <td align="center"><?= $mmn->status ?></td>
                                     <td width="150px" align="center">
                                         <a href="<?= base_url('admin/c_admin/detail_minuman/' . $mmn->kode_menu) ?>" class=" btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
@@ -116,7 +120,6 @@
             </section>
             <!-- Main content -->
         </div>
-
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
@@ -155,10 +158,8 @@
 
         // Sweet Alert 2 Hapus Data
         $('.tombol-hapus').on('click', function(e) {
-
             e.preventDefault();
             const hapus = $(this).attr('href')
-
             Swal.fire({
                 title: 'Apakah anda yakin?',
                 text: "Data Minuman akan di HAPUS!",
@@ -173,7 +174,6 @@
                     document.location.href = hapus
                 }
             })
-
         })
     </script>
     <!-- jQuery -->
