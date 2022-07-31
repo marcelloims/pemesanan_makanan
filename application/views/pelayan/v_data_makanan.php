@@ -49,28 +49,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <?php if ($mkn->promo) : ?>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="btn btn-sm btn-secondary">
-                                                            <b><del>Rp. <?= number_format($mkn->harga, 0, ',', '.') . "<br>"; ?></del></b>
-                                                        </div>
+                                                        <span>
+                                                            <b><del>Rp. <?= number_format($mkn->harga, 0, ',', '.'); ?></del></b>
+                                                        </span>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="btn btn-sm btn-success">
-                                                            <b>Rp. <?= number_format($mkn->promo, 0, ',', '.') . "<br>"; ?></b>
-                                                        </div>
+                                                    <div class="col text-success">
+                                                        <span>
+                                                            <b>Rp. <?= number_format($mkn->promo, 0, ',', '.'); ?></b>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             <?php else : ?>
-                                                <p><b>Rp. <?= number_format($mkn->harga, 0, ',', '.') . "<br>"; ?></b></p>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span>
+                                                            <b>Rp. <?= number_format($mkn->harga, 0, ',', '.'); ?></b>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             <?php endif; ?>
                                         </div>
-                                        <div class="card-footer text-center bg-white">
-                                            <a href="<?= base_url('pelayan/c_pelayan/detail_makanan/' . $mkn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
-                                            <?php if ($mkn->status != 'Kosong') : ?>
-                                                <?= anchor('pelayan/c_pelayan/pesan_menu_makanan/' . $mkn->kode_menu, '<div class="btn btn-sm btn-success"><i aria-hidden="true"></i> Pesan</div>') ?>
-                                            <?php else : ?>
-                                                <button class="btn btn-sm btn-danger" disabled>Kosong</button>
-                                            <?php endif; ?>
-                                        </div>
+                                        <form action="<?= base_url('pelayan/c_pelayan/pesan_menu_makanan/' . $mkn->kode_menu) ?>" method="post">
+                                            <div class="row justify-content-center">
+                                                <div class="col-5 text-center">
+                                                    <input type="number" min="1" name="qty_item" class="form-control" placeholder="qty" required>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-center bg-white">
+                                                <a href="<?= base_url('pelayan/c_pelayan/detail_makanan/' . $mkn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
+                                                <?php if ($mkn->status != 'Kosong') : ?>
+                                                    <button type="submit" class="btn btn-sm btn-success">Pesan</button>
+                                                <?php else : ?>
+                                                    <button class="btn btn-sm btn-danger" disabled>Kosong</button>
+                                                <?php endif; ?>
+                                            </div>
+                                        </form>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

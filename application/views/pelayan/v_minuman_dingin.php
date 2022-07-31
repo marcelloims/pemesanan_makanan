@@ -60,15 +60,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<p><b>Rp. <?= number_format($mmn->harga, 0, ',', '.') . "<br>"; ?></b></p>
 											<?php endif; ?>
 										</div>
-										<div class="card-footer text-center bg-white">
-											<a href="<?= base_url('pelayan/c_pelayan/detail_makanan/' . $mmn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
-
-											<?php if ($mmn->status != 'Kosong') : ?>
-												<?= anchor('pelayan/c_pelayan/pesan_menu_minuman/' . $mmn->kode_menu, '<div class="btn btn-sm btn-success"><i aria-hidden="true"></i> Pesan</div>') ?>
-											<?php else : ?>
-												<button class="btn btn-sm btn-danger" disabled>Kosong</button>
-											<?php endif; ?>
-										</div>
+										<form action="<?= base_url('pelayan/c_pelayan/pesan_menu_minuman/' . $mmn->kode_menu) ?>" method="post">
+											<div class="row justify-content-center">
+												<div class="col-5 text-center">
+													<input type="number" min="1" name="qty_item" class="form-control" placeholder="qty" required>
+												</div>
+											</div>
+											<div class="card-footer text-center bg-white">
+												<a href="<?= base_url('pelayan/c_pelayan/detail_minuman/' . $mmn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
+												<?php if ($mmn->status != 'Kosong') : ?>
+													<button type="submit" class="btn btn-sm btn-success">Pesan</button>
+												<?php else : ?>
+													<button class="btn btn-sm btn-danger" disabled>Kosong</button>
+												<?php endif; ?>
+											</div>
+										</form>
 									</div>
 								<?php endforeach; ?>
 							</div>

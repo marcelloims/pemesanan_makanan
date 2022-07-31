@@ -1,7 +1,7 @@
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
 	<a href="<?= base_url('auth/c_auth/login') ?>" class="navbar-brand">
 		<img src="<?= base_url() ?>assets/dist/img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-		<span class="brand-text font-weight-light">Angkringan Veskop</span>
+		<span class="brand-text font-weight-light">Veskop</span>
 	</a>
 
 	<div class="collapse navbar-collapse order-3" id="navbarCollapse">

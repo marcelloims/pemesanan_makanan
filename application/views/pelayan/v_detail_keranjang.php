@@ -57,8 +57,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<tr>
 										<td align="center"><?php echo $no++ ?></td>
 										<td><?php echo $items['name'] ?></td>
-										<td>
-											<input type="number" class="form-control text-center" id="qty" min="1" name="qty" value="<?= number_format($items['qty']) ?>" onchange="update_cart(this.value, '<?= $items['rowid'] ?>')">
+										<td align="center">
+											<!-- <input type="number" class="form-control text-center" id="qty" min="1" name="qty" value="<?= number_format($items['qty']) ?>" onchange="update_cart(this.value, '<?= $items['rowid'] ?>')"> -->
+											<?= number_format($items['qty']) ?>
 										</td>
 										<td align="right">Rp. <?php echo number_format($items['price'], 0, ',', '.') ?></td>
 										<td align="right">Rp. <?php echo number_format($items['subtotal'], 0, ',', '.') ?></td>

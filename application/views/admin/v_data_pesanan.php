@@ -44,27 +44,7 @@
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            foreach ($pesanan as $psn) :
-                            ?>
-                                <tr>
-                                    <th scope="row"><?= $no++ ?></th>
-                                    <td align="center"><?= $psn->tanggal_invoice ?></td>
-                                    <td align="center"><?= $psn->no_invoice ?></td>
-                                    <td align="center"><?= $psn->meja ?></td>
-                                    <?php if ($psn->status_pesanan == 'Lunas') : ?>
-                                        <td align="center"><span class="btn btn-sm btn-success"><?= $psn->status_pesanan ?></span></td>
-                                    <?php else : ?>
-                                        <td align="center"><span class="btn btn-sm btn-warning"><?= $psn->status_pesanan ?></span></td>
-                                    <?php endif; ?>
-                                    <td width="150px" align="center">
-                                        <a href="<?= base_url('admin/c_admin/detail_pesanan/' . $psn->no_invoice) ?>" class=" btn btn-sm btn-info"><i class="fas fa-dollar-sign"></i></a>
-                                        <a href="<?= base_url('admin/c_admin/print/' . $psn->no_invoice) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <tbody id="data_pesanan">
                         </tbody>
                     </table>
                 </div>
@@ -90,12 +70,44 @@
     <!-- jQuery -->
     <?php $this->load->view('_templates_admin/js'); ?>
     <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                $.ajax({
+                    url: "<?= base_url('admin/c_admin/datapesanan') ?>",
+                    type: "POST",
+                    dataType: "json",
+                    success: function(data) {
+                        // console.log(data);
+                        var html = '';
+                        data.forEach(function(result, index) {
+                            console.log(result, index);
+                            var i = index + 1
+                            html += '<tr>' +
+                                '<th scope="row">' + i + '</th>' +
+                                '<td align="center">' + result.no_invoice + '</td>' +
+                                '<td align="center">' + result.tanggal_invoice + '</td>' +
+                                '<td align="center">' + result.meja + '</td>' +
+                                '<td align="center">' + result.status_pesanan + '</td>' +
+                                '<td align="center">' +
+                                '<a href="<?= base_url("admin/c_admin/detail_pesanan/") ?>' + result.no_invoice + '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>' +
+                                '<a href="<?= base_url("admin/c_admin/print/") ?>' + result.no_invoice + '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>' +
+                                '</td>' +
+                                '</tr>'
+                        });
+                        $('#data_pesanan').html(html);
+                    }
+                });
+            }, 2000);
+        });
+
+
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,
             });
         });
+
 
         // Sweet Alert 2 Simpan dan Update Data
         const simpanData = $('.flash-data').data('flashdata');

@@ -299,6 +299,12 @@ class C_admin extends CI_Controller
 		$this->load->view('admin/v_data_pesanan', $data);
 	}
 
+	public function datapesanan()
+	{
+		$data 	= $this->Model_admin->data_pesanan()->result();
+		echo json_encode($data);
+	}
+
 	public function detail_pesanan($id)
 	{
 		$data['detail']  = $this->Model_admin->detail_pesanan($id);
