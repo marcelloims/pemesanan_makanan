@@ -82,12 +82,13 @@
                         data.forEach(function(result, index) {
                             console.log(result, index);
                             var i = index + 1
+                            var button = result.status_pesanan == "Dalam Proses" ? "btn-info" : "btn-success"
                             html += '<tr>' +
                                 '<th scope="row">' + i + '</th>' +
                                 '<td align="center">' + result.no_invoice + '</td>' +
                                 '<td align="center">' + result.tanggal_invoice + '</td>' +
                                 '<td align="center">' + result.meja + '</td>' +
-                                '<td align="center">' + result.status_pesanan + '</td>' +
+                                '<td align="center"><span class="btn btn-sm ' + button + '">' + result.status_pesanan + '</span></td>' +
                                 '<td align="center">' +
                                 '<a href="<?= base_url("admin/c_admin/detail_pesanan/") ?>' + result.no_invoice + '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>' +
                                 '<a href="<?= base_url("admin/c_admin/print/") ?>' + result.no_invoice + '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>' +
