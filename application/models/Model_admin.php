@@ -31,11 +31,15 @@ class Model_admin extends CI_Model
 
     public function total_penjualan_makanan($where, $table)
     {
+        $this->db->select("nama");
+        $this->db->select_sum("qty");
         return $this->db->get_where($table, $where);
     }
 
     public function total_penjualan_minuman($where, $table)
     {
+        $this->db->select("nama");
+        $this->db->select_sum("qty");
         return $this->db->get_where($table, $where);
     }
 
@@ -137,7 +141,7 @@ class Model_admin extends CI_Model
 
     public function data_pesanan()
     {
-        $this->db->order_by('no_invoice', 'DESC');
+        $this->db->order_by('tanggal_invoice', 'DESC');
         return $this->db->get('tb_orders');
     }
 

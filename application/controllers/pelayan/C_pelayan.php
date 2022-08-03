@@ -72,12 +72,13 @@ class C_pelayan extends CI_Controller
 	public function pesan_menu_minuman($id)
 	{
 		$menu = $this->Model_pelayan->find($id);
+		$qty	= $this->input->post('qty_item');
 
 		$harga = $menu->promo == 0 ? $menu->harga : $menu->promo;
 
 		$data = [
 			'id'      => $menu->kode_menu,
-			'qty'     => 1,
+			'qty'     => $qty,
 			'price'   => $harga,
 			'name'    => $menu->nama_menu,
 			'kategori' => $menu->kategori

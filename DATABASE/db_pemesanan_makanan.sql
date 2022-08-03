@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Apr 2022 pada 02.31
+-- Waktu pembuatan: 03 Agu 2022 pada 19.27
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_codeigniter_pemesanan_makanan`
+-- Database: `db_pemesanan_makanan`
 --
 
 -- --------------------------------------------------------
@@ -38,21 +38,6 @@ CREATE TABLE `tb_detail_orders` (
   `sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `tb_detail_orders`
---
-
-INSERT INTO `tb_detail_orders` (`no_invoice`, `kode`, `nama`, `meja`, `qty`, `harga`, `sub_total`) VALUES
-('ABC26042022-001', 'MMN-210121-2', 'Ice Coffee', 5, 1, 12000, 12000),
-('ABC26042022-001', 'MKN-200121-2', 'Mie Ayam', 5, 1, 12000, 12000),
-('ABC26042022-002', 'MKN-200121-2', 'Mie Ayam', 2, 1, 12000, 12000),
-('ABC26042022-002', 'MKN-200121-1', 'Kwetiao Goreng', 2, 1, 20000, 20000),
-('ABC26042022-002', 'MKN-200121-3', 'Nasi Goreng', 2, 1, 10000, 10000),
-('ABC26042022-002', 'MMN-210121-2', 'Ice Coffee', 2, 1, 12000, 12000),
-('ABC26042022-002', 'MMN-210121-1', 'Vietnam Drip', 2, 1, 10000, 10000),
-('ABC26042022-003', 'MKN-200121-2', 'Mie Ayam', 1, 1, 12000, 12000),
-('ABC26042022-003', 'MKN-200121-3', 'Nasi Goreng', 1, 2, 10000, 20000);
-
 -- --------------------------------------------------------
 
 --
@@ -60,10 +45,11 @@ INSERT INTO `tb_detail_orders` (`no_invoice`, `kode`, `nama`, `meja`, `qty`, `ha
 --
 
 CREATE TABLE `tb_menus` (
-  `kode_menu` varchar(25) NOT NULL,
+  `kode_menu` int(11) NOT NULL,
   `nama_menu` varchar(225) NOT NULL,
   `kategori` varchar(25) NOT NULL,
   `harga` int(11) NOT NULL,
+  `promo` int(11) NOT NULL,
   `deskripsi` text NOT NULL,
   `foto` varchar(225) NOT NULL,
   `status` varchar(25) NOT NULL
@@ -73,13 +59,13 @@ CREATE TABLE `tb_menus` (
 -- Dumping data untuk tabel `tb_menus`
 --
 
-INSERT INTO `tb_menus` (`kode_menu`, `nama_menu`, `kategori`, `harga`, `deskripsi`, `foto`, `status`) VALUES
-('MKN-200121-1', 'Kwetiao Goreng', 'Makanan', 20000, 'Kwetiau goreng adalah kwetiau yang digoreng yang merupakan masakan Tionghoa Indonesia, itu adalah hidangan mie yang digoreng yang beraroma dan pedas yang umum dijumpai di Indonesia', 'ketiauw_goreng1.jpg', 'Ready'),
-('MKN-200121-2', 'Mie Ayam', 'Makanan', 12000, 'Mi ayam atau bakmi ayam adalah masakan Indonesia yang terbuat dari mi kuning direbus mendidih kemudian ditaburi saus kecap khusus beserta daging ayam dan sayuran', 'Mie_Ayam.jpg', 'Ready'),
-('MKN-200121-3', 'Nasi Goreng', 'Makanan', 10000, 'Nasi goreng adalah sebuah makanan berupa nasi yang digoreng dan diaduk dalam minyak goreng, margarin atau mentega, biasanya ditambah kecap manis, bawang merah, bawang putih, asam jawa, lada dan bumbu-bumbu lainnya, seperti telur, ayam, dan kerupuk.', 'Nasi_Goreng.jpg', 'Ready'),
-('MKN-200121-4', 'Empek-Empel Kapal Selam', 'Makanan', 25000, 'Pempek atau empek-empek adalah makanan yang terbuat dari daging ikan yang digiling lembut yang dicampur tepung kanji atau tepung sagu, serta komposisi beberapa bahan lain seperti telur, bawang putih yang dihaluskan, penyedap rasa, dan garam', 'Pek_Empek_Kapal_Selam.jpg', 'Kosong'),
-('MMN-210121-1', 'Vietnam Drip', 'Minuman', 10000, 'Lorem Ipsum', 'es_teh3.jpg', 'Ready'),
-('MMN-210121-2', 'Ice Coffee', 'Minuman', 12000, 'Lorem Ipsuum', 'ice_coffee.jpg', 'Ready');
+INSERT INTO `tb_menus` (`kode_menu`, `nama_menu`, `kategori`, `harga`, `promo`, `deskripsi`, `foto`, `status`) VALUES
+(1, 'Kwetiau goreng', 'Makanan', 25000, 20000, 'Kwetiau goreng adalah kwetiau yang digoreng yang merupakan masakan Tionghoa Indonesia, itu adalah hidangan mie yang digoreng yang beraroma dan pedas yang umum dijumpai di Indonesia', 'ketiauw_goreng2.jpg', 'Ready'),
+(2, 'Mie Ayam', 'Makanan', 7000, 0, 'Mi ayam adalah hidangan khas Indonesia yang terbuat dari mi gandum kuning yang dibumbui dengan daging ayam yang biasanya dipotong dadu', 'Mie_Ayam1.jpg', 'Ready'),
+(3, 'Nasi Goreng', 'Makanan', 12000, 0, 'Nasi goreng adalah sebuah makanan berupa nasi yang digoreng dan diaduk dalam minyak goreng, margarin, atau mentega', 'Nasi_Goreng1.jpg', 'Ready'),
+(4, 'Empek-empek Kapal Selam', 'Makanan', 25000, 0, 'Pempek atau empek-empek adalah makanan yang terbuat dari daging ikan yang digiling lembut yang dicampur tepung kanji atau tepung sagu, serta komposisi beberapa bahan lain seperti telur, bawang putih yang dihaluskan, penyedap rasa, dan garam', 'Pek_Empek_Kapal_Selam2.jpg', 'Ready'),
+(5, 'Ice Tea', 'Ice', 4000, 0, 'Es teh atau Teh es adalah teh yang didinginkan dengan es batu. Es teh sering kali ditambahkan rasa seperti melati, dan buah-buahan seperti limun, ceri, dan arbei, atau susu.', 'es_teh4.jpg', 'Ready'),
+(6, 'Cappuccino', 'Hot', 20000, 0, 'Kapucino adalah minuman khas Italia yang dibuat dari espreso dan susu, tetapi referensi lain juga ada yang menyebutkan bahwa kapucino berawal dari biji biji kopi tentara Turki yang tertinggal setelah peperangan yang di pimpin oleh Kara Mustapha Pasha di Wina, Austria melawan tentara gabungan Polandia-Germania', 'Cappuccino-PNG-File1.png', 'Ready');
 
 -- --------------------------------------------------------
 
@@ -89,19 +75,10 @@ INSERT INTO `tb_menus` (`kode_menu`, `nama_menu`, `kategori`, `harga`, `deskrips
 
 CREATE TABLE `tb_orders` (
   `no_invoice` varchar(25) NOT NULL,
-  `tanggal_invoice` varchar(225) NOT NULL,
+  `tanggal_invoice` datetime NOT NULL,
   `meja` int(11) NOT NULL,
   `status_pesanan` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tb_orders`
---
-
-INSERT INTO `tb_orders` (`no_invoice`, `tanggal_invoice`, `meja`, `status_pesanan`) VALUES
-('ABC26042022-001', '26-Apr-2022', 5, 'Lunas'),
-('ABC26042022-002', '26-Apr-2022', 2, 'Dalam Proses'),
-('ABC26042022-003', '26-Apr-2022', 1, 'Dalam Proses');
 
 -- --------------------------------------------------------
 
@@ -150,6 +127,12 @@ ALTER TABLE `tb_users`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_menus`
+--
+ALTER TABLE `tb_menus`
+  MODIFY `kode_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_users`

@@ -56,7 +56,7 @@ class Model_pelayan extends CI_Model
         $kode = 'VesKop-' . $t;
         $pesanan = [
             'no_invoice'        => $kode,
-            'tanggal_invoice'   => date('d-M-Y'),
+            'tanggal_invoice'   => date('Y-m-d H:i:s'),
             'status_pesanan'    => "Dalam Proses",
             'meja'              => $meja,
             // 'id_user'           => $this->session->userdata('id_user'),

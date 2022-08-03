@@ -95,34 +95,36 @@
                     <h3>Data Penjualan Makanan</h3>
                     <div class="row">
                         <?php
-                        $i = 0;
-                        foreach ($nama_makanan as $mkn) : ?>
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-primary">
-                                    <div class="inner">
-                                        <h3><?= $total_mkn[$i++] ?></h3> <span>Porsi</span>
-                                        <p><?= $mkn ?></p>
+                        foreach ($penjualan_mkn as $mkn) : ?>
+                            <?php if ($mkn[0]->qty) : ?>
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-primary">
+                                        <div class="inner">
+                                            <h3><?= $mkn[0]->qty ?></h3> <span>Porsi</span>
+                                            <p><?= $mkn[0]->nama ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                     <hr>
                     <h3>Data Penjualan Minuman</h3>
                     <div class="row">
                         <?php
-                        $i = 0;
-                        foreach ($nama_minuman as $mkn) : ?>
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-light">
-                                    <div class="inner">
-                                        <h3><?= $total_mmn[$i++] ?></h3> <span>Porsi</span>
-                                        <p><?= $mkn ?></p>
+                        foreach ($penjualan_mmn as $mkn) : ?>
+                            <?php if ($mkn[0]->qty) : ?>
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-light">
+                                        <div class="inner">
+                                            <h3><?= $mkn[0]->qty ?></h3> <span>Porsi</span>
+                                            <p><?= $mkn[0]->nama ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                     <!-- /.row -->

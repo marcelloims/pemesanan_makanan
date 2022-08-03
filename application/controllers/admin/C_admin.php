@@ -34,17 +34,14 @@ class C_admin extends CI_Controller
 			$nama_makanan[]     = $data_mkn->nama_menu;
 			$kode_makanan[]     = $data_mkn->kode_menu;
 		}
-		$data['nama_makanan']      = $nama_makanan;
-		$data['kode_makanan']      = $kode_makanan;
 
-
-		for ($i = 0; $i < count($data['kode_makanan']); $i++) {
-			$where = ['kode' => $data['kode_makanan'][$i]];
-			$gets[]   = $this->Model_admin->total_penjualan_makanan($where, 'tb_detail_orders')->num_rows();
+		for ($i = 0; $i < count($kode_makanan); $i++) {
+			$where = ['kode' => $kode_makanan[$i]];
+			$gets_makan[] = $this->Model_admin->total_penjualan_makanan($where, 'tb_detail_orders')->result();
 		}
-		$data['total_mkn']   = $gets;
-		// var_dump($data['total_mkn']);
-		// die;
+		$data['penjualan_mkn'] = $gets_makan;
+
+
 
 		$data_minuman           = $this->Model_admin->data_minuman()->result();
 		$nama_minuman           = [];
@@ -53,17 +50,13 @@ class C_admin extends CI_Controller
 			$nama_minuman[]     = $data_mkn->nama_menu;
 			$kode_minuman[]     = $data_mkn->kode_menu;
 		}
-		$data['nama_minuman']      = $nama_minuman;
-		$data['kode_minuman']      = $kode_minuman;
 
-
-		for ($i = 0; $i < count($data['kode_minuman']); $i++) {
-			$where = ['kode' => $data['kode_minuman'][$i]];
-			$gets_minum[]   = $this->Model_admin->total_penjualan_minuman($where, 'tb_detail_orders')->num_rows();
+		for ($i = 0; $i < count($kode_minuman); $i++) {
+			$where = ['kode' => $kode_minuman[$i]];
+			$gets_minum[]   = $this->Model_admin->total_penjualan_minuman($where, 'tb_detail_orders')->result();
 		}
-		$data['total_mmn']   = $gets_minum;
-		// var_dump($data['total_mmn']);
-		// die;
+		$data['penjualan_mmn']   = $gets_minum;
+
 
 		$this->load->view('admin/v_dashboard', $data);
 	}
@@ -295,8 +288,7 @@ class C_admin extends CI_Controller
 
 	public function data_pesanan()
 	{
-		$data['pesanan'] = $this->Model_admin->data_pesanan()->result();
-		$this->load->view('admin/v_data_pesanan', $data);
+		$this->load->view('admin/v_data_pesanan');
 	}
 
 	public function datapesanan()

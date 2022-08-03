@@ -80,13 +80,16 @@
                         // console.log(data);
                         var html = '';
                         data.forEach(function(result, index) {
-                            console.log(result, index);
+                            // console.log(result, index);
+                            var d = new Date(result.tanggal_invoice)
+                            var t = String(d)
+                            var tanggal = t.substring(4, 25)
                             var i = index + 1
                             var button = result.status_pesanan == "Dalam Proses" ? "btn-info" : "btn-success"
                             html += '<tr>' +
                                 '<th scope="row">' + i + '</th>' +
                                 '<td align="center">' + result.no_invoice + '</td>' +
-                                '<td align="center">' + result.tanggal_invoice + '</td>' +
+                                '<td align="center">' + tanggal + '</td>' +
                                 '<td align="center">' + result.meja + '</td>' +
                                 '<td align="center"><span class="btn btn-sm ' + button + '">' + result.status_pesanan + '</span></td>' +
                                 '<td align="center">' +
