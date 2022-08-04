@@ -291,10 +291,39 @@ class C_admin extends CI_Controller
 		$this->load->view('admin/v_data_pesanan');
 	}
 
-	public function datapesanan()
+	public function get_pesanan()
 	{
-		$data 	= $this->Model_admin->data_pesanan()->result();
-		echo json_encode($data);
+		// $data 	= $this->Model_admin->data_pesanan()->result();
+		// echo json_encode($data);
+
+		$list   = $this->Model_admin->data_pesanan()->result();
+		$data   = [];
+		$no     = $this->input->post('start'); //$_POST['start'];
+
+
+		foreach ($list as $item) {
+			$no++;
+			$row = array();
+			$row[] = $no;
+			$row[] = 'Veskop-' . $item->no_invoice;
+			$row[] = date('d-M-Y h:i:s', strtotime($item->tanggal_invoice));
+			$row[] = $item->meja;
+			$row[] = $item->status_pesanan;
+			$row[] = '
+            <a href="' . base_url('admin/c_admin/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>
+            <a href="' . base_url('admin/c_admin/print/' . $item->no_invoice) . '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
+            ';
+			$data[] = $row;
+		}
+
+		$output = array(
+			"draw"              => $this->input->post('draw'), //$_POST['draw'],
+			"recordsTotal"      => $this->Model_admin->count_all_data(),
+			"recordsFiltered"   => $this->Model_admin->count_filtered_data(),
+			"data"              => $data,
+		);
+
+		echo json_encode($output);
 	}
 
 	public function detail_pesanan($id)

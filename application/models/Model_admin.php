@@ -139,11 +139,72 @@ class Model_admin extends CI_Model
     }
 
 
+    // public function data_pesanan()
+    // {
+    //     $this->db->order_by('tanggal_invoice', 'DESC');
+    //     return $this->db->get('tb_orders');
+    // }
+
+    // ==============================dataTable==============================
+    var $table          = 'tb_orders';
+    var $order          = [null, 'no_invoice', 'tanggal_invoice', 'meja', 'status_pesanan', null]; // this fillter by field table in database
+
+
+    private function _get_data_pesanan()
+    {
+        $this->db->from($this->table);
+
+        // this  is function search in table
+        if (isset($_POST['search']['value'])) {
+            $this->db->like('no_invoice', $_POST['search']['value']);
+            $this->db->or_like('tanggal_invoice', $_POST['search']['value']);
+            $this->db->or_like('meja', $_POST['search']['value']);
+            $this->db->or_like('status_pesanan', $_POST['search']['value']);
+        }
+        // this  is function search in table
+
+
+        // this is function fillter in table
+        $order = $this->input->post('order');
+        if (isset($order)) {
+            $this->db->order_by($this->order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by('tanggal_invoice', 'DESC'); // this filtered by field id_supplier in table
+        }
+        // this is function fillter in table
+    }
+
+
+    // Get supplier in database
     public function data_pesanan()
     {
+        $this->_get_data_pesanan();
+        if ($this->input->post('length') != -1) { // $_POST['length']
+            $this->db->limit($this->input->post('length'), $this->input->post('start')); //$_POST['length'] $_POST['start']
+        }
         $this->db->order_by('tanggal_invoice', 'DESC');
-        return $this->db->get('tb_orders');
+        return $this->db->get();
     }
+    // Get supplier in database
+
+
+    // this pages ini datatable
+    public function count_filtered_data()
+    {
+        $this->_get_data_pesanan();
+        return $this->db->get()->num_rows();
+    }
+    // this pages in datatable
+
+
+    // this all total data in datatable
+    public function count_all_data()
+    {
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
+    // this all total data in datatable
+    // ==============================dataTable==============================
 
     public function detail_pesanan($id)
     {

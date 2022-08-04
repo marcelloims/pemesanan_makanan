@@ -44,7 +44,7 @@
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="data_pesanan">
+                        <tbody>
                         </tbody>
                     </table>
                 </div>
@@ -70,46 +70,26 @@
     <!-- jQuery -->
     <?php $this->load->view('_templates_admin/js'); ?>
     <script>
-        $(document).ready(function() {
-            setInterval(function() {
-                $.ajax({
-                    url: "<?= base_url('admin/c_admin/datapesanan') ?>",
-                    type: "POST",
-                    dataType: "json",
-                    success: function(data) {
-                        // console.log(data);
-                        var html = '';
-                        data.forEach(function(result, index) {
-                            // console.log(result, index);
-                            var d = new Date(result.tanggal_invoice)
-                            var t = String(d)
-                            var tanggal = t.substring(4, 25)
-                            var i = index + 1
-                            var button = result.status_pesanan == "Dalam Proses" ? "btn-info" : "btn-success"
-                            html += '<tr>' +
-                                '<th scope="row">' + i + '</th>' +
-                                '<td align="center">' + result.no_invoice + '</td>' +
-                                '<td align="center">' + tanggal + '</td>' +
-                                '<td align="center">' + result.meja + '</td>' +
-                                '<td align="center"><span class="btn btn-sm ' + button + '">' + result.status_pesanan + '</span></td>' +
-                                '<td align="center">' +
-                                '<a href="<?= base_url("admin/c_admin/detail_pesanan/") ?>' + result.no_invoice + '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>' +
-                                '<a href="<?= base_url("admin/c_admin/print/") ?>' + result.no_invoice + '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>' +
-                                '</td>' +
-                                '</tr>'
-                        });
-                        $('#data_pesanan').html(html);
-                    }
-                });
-            }, 2000);
-        });
-
-
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
+        var table = $('#example1').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '<?= base_url("admin/c_admin/get_pesanan") ?>',
+                type: 'POST'
+            },
+            "columnDefs": [{
+                    targets: [0],
+                    'className': 'text-bold'
+                },
+                {
+                    targets: [1, 2, 3, 4, 5],
+                    'className': 'text-center'
+                },
+                {
+                    targets: [0, 3, 4, 5],
+                    orderable: false
+                }
+            ],
         });
 
 
