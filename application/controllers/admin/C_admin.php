@@ -296,19 +296,19 @@ class C_admin extends CI_Controller
 		// $data 	= $this->Model_admin->data_pesanan()->result();
 		// echo json_encode($data);
 
-		$list   = $this->Model_admin->data_pesanan()->result();
-		$data   = [];
-		$no     = $this->input->post('start'); //$_POST['start'];
-
+		$list   	= $this->Model_admin->data_pesanan()->result();
+		$data   	= [];
+		$no     	= $this->input->post('start'); //$_POST['start'];
 
 		foreach ($list as $item) {
+			$btn_collor	= $item->status_pesanan == "Lunas" ? 'btn-success' : 'btn-info';
 			$no++;
 			$row = array();
 			$row[] = $no;
 			$row[] = 'Veskop-' . $item->no_invoice;
 			$row[] = date('d-M-Y h:i:s', strtotime($item->tanggal_invoice));
 			$row[] = $item->meja;
-			$row[] = $item->status_pesanan;
+			$row[] = '<span class="btn btn-sm ' . $btn_collor . '">' . $item->status_pesanan . '</span>';
 			$row[] = '
             <a href="' . base_url('admin/c_admin/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>
             <a href="' . base_url('admin/c_admin/print/' . $item->no_invoice) . '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
