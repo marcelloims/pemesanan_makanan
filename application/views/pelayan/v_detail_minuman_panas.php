@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </tr>
                             </table>
 
-                            <?php echo anchor('pelayan/c_pelayan/minuman_dingin/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                            <?php echo anchor('pelayan/c_pelayan/minuman_panas/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                         </div>
                     </div>
                 </div>

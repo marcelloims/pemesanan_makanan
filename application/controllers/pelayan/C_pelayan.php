@@ -48,6 +48,12 @@ class C_pelayan extends CI_Controller
 		$this->load->view('pelayan/v_detail_minuman', $data);
 	}
 
+	public function detail_minuman_panas($id)
+	{
+		$data['minuman'] = $this->Model_admin->detail_minuman($id);
+		$this->load->view('pelayan/v_detail_minuman_panas', $data);
+	}
+
 
 	public function pesan_menu_makanan($id)
 	{

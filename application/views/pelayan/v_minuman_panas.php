@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												</div>
 											</div>
 											<div class="card-footer text-center bg-white">
-												<a href="<?= base_url('pelayan/c_pelayan/detail_minuman/' . $mmn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
+												<a href="<?= base_url('pelayan/c_pelayan/detail_minuman_panas/' . $mmn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>
 												<?php if ($mmn->status != 'Kosong') : ?>
 													<button type="submit" class="btn btn-sm btn-success">Pesan</button>
 												<?php else : ?>
