@@ -53,7 +53,7 @@ class Model_pelayan extends CI_Model
 
         $jumlah_pesanan = $this->db->get('tb_orders')->num_rows();
         $t = $jumlah_pesanan + 1;
-        $kode = 'VesKop-' . $t;
+        $kode =  $t;
         $pesanan = [
             'no_invoice'        => $kode,
             'tanggal_invoice'   => date('Y-m-d H:i:s'),
