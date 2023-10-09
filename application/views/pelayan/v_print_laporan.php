@@ -54,11 +54,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-sm-4 invoice-col">
                                             From
                                             <address>
-                                                <strong>Warung Marcell</strong><br>
-                                                795 Folsom Ave, Suite 600<br>
-                                                San Francisco, CA 94107<br>
-                                                Phone: (804) 123-5432<br>
-                                                Email: info@almasaeedstudio.com
+                                                <strong>Jaju Coffee</strong><br>
+                                                Jalan Cokroaminoto Nomor 128, Ubung<br>
+												Kota Denpasar, Bali<br>
                                             </address>
                                         </div>
                                         <!-- /.col -->

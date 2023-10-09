@@ -6,8 +6,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-
-    <div class="wrapper">
+	<div class="wrapper">
 
         <!-- Navbar -->
         <?php $this->load->view('_templates_admin/navbar'); ?>
@@ -33,11 +32,11 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container">
-                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-plus"> Data Makanan</i>
                     </button>
+
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,24 +53,28 @@
                                         <input type="hidden" name="kode_menu" value="MKN-<?php echo date('dmy') ?>-<?= $jumlah_makanan + 1 ?>">
                                         <div class="form-group">
                                             <label for="">Nama Makanan</label>
-                                            <input type="text" class="form-control" name="nama_menu" placeholder="Nama Makanan">
+                                            <input type="text" class="form-control" name="nama_menu" value="<?php echo set_value('nama_menu'); ?>" placeholder="Nama Makanan">
+											<span class="text-danger"><?php echo form_error('nama_menu') ?></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Harga</label>
-                                            <input type="text" class="form-control" name="harga" placeholder="Harga">
+                                            <input type="text" class="form-control" name="harga" value="<?php echo set_value('harga');?>" placeholder="Harga">
+											<?php echo form_error('harga'); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Deskripsi</label>
-                                            <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsi">
-                                        </div>
+                                            <input type="text" class="form-control" name="deskripsi" value="<?php echo set_value('deskripsi');?>" placeholder="Deskripsi">
+											<?php echo form_error('deskripsi'); ?>
+										</div>
                                         <div class="form-group">
                                             <label for="">Foto</label>
-                                            <input type="file" class="file-control" name="foto" placeholder="Foto">
-                                        </div>
+                                            <input type="file" class="file-control" name="foto" value="<?php echo set_value('foto');?>" placeholder="Foto">
+											<?php echo form_error('foto'); ?>
+										</div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" id="tombal_tambah" class="btn btn-success">Save changes</button>
+                                        <button type="submit" id="tombal_tambah" class="btn btn-success">Save</button>
                                     </div>
                                 </form>
                             </div>

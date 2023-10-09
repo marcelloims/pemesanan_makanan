@@ -84,8 +84,14 @@ class C_admin extends CI_Controller
 		$nama_menu      = $this->input->post('nama_menu');
 		$harga          = $this->input->post('harga');
 		$deskripsi      = $this->input->post('deskripsi');
+
+		$this->form_validation->set_rules('nama_menu', 'Nama Makanan', 'required', ['required' => "Nama makanan tidak boleh kosong!"]);
+		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => "Harga tidak boleh kosong!"]);
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', ['required' => "Deskripsi tidak boleh kosong!"]);
+
 		$foto_makanan   = $_FILES['foto']['name'];
-		if ($foto_makanan = '') {
+		if ($foto_makanan == null) {
+			$this->form_validation->set_rules('foto', 'Foto', 'required', ['required' => "Foto tidak boleh kosong!"]);
 		} else {
 			$config['upload_path'] = './uploads';
 			$config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -96,6 +102,14 @@ class C_admin extends CI_Controller
 			} else {
 				$foto_makanan = $this->upload->data('file_name');
 			}
+		}
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['makanan'] = $this->Model_admin->data_makanan()->result();
+			$data['jumlah_makanan'] = $this->Model_admin->jumlah_makanan();
+			
+			$this->load->view('admin/v_data_makanan', $data);
 		}
 
 		$data = [
@@ -109,8 +123,7 @@ class C_admin extends CI_Controller
 		];
 
 		$this->Model_admin->tambah_makanan($data, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('admin/c_admin/data_makanan');
+		
 	}
 
 	public function detail_makanan($id)
@@ -124,6 +137,7 @@ class C_admin extends CI_Controller
 	{
 		$where = ['kode_menu' => $id];
 		$data['makanan'] = $this->Model_admin->edit_makanan($where, 'tb_menus');
+
 		$data['status'] = ['Ready', 'Kosong'];
 		$this->load->view('admin/v_edit_makanan', $data);
 	}
@@ -305,7 +319,7 @@ class C_admin extends CI_Controller
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = 'Veskop-' . $item->no_invoice;
+			$row[] = 'Jaju Coffee-' . $item->no_invoice;
 			$row[] = date('d-M-Y h:i:s', strtotime($item->tanggal_invoice));
 			$row[] = $item->meja;
 			$row[] = '<span class="btn btn-sm ' . $btn_collor . '">' . $item->status_pesanan . '</span>';
