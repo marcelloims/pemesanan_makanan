@@ -60,12 +60,13 @@ CREATE TABLE `tb_menus` (
 --
 
 INSERT INTO `tb_menus` (`kode_menu`, `nama_menu`, `kategori`, `harga`, `promo`, `deskripsi`, `foto`, `status`) VALUES
-(1, 'Kwetiau goreng', 'Makanan', 25000, 20000, 'Kwetiau goreng adalah kwetiau yang digoreng yang merupakan masakan Tionghoa Indonesia, itu adalah hidangan mie yang digoreng yang beraroma dan pedas yang umum dijumpai di Indonesia', 'ketiauw_goreng2.jpg', 'Ready'),
-(2, 'Mie Ayam', 'Makanan', 7000, 0, 'Mi ayam adalah hidangan khas Indonesia yang terbuat dari mi gandum kuning yang dibumbui dengan daging ayam yang biasanya dipotong dadu', 'Mie_Ayam1.jpg', 'Ready'),
-(3, 'Nasi Goreng', 'Makanan', 12000, 0, 'Nasi goreng adalah sebuah makanan berupa nasi yang digoreng dan diaduk dalam minyak goreng, margarin, atau mentega', 'Nasi_Goreng1.jpg', 'Ready'),
-(4, 'Empek-empek Kapal Selam', 'Makanan', 25000, 0, 'Pempek atau empek-empek adalah makanan yang terbuat dari daging ikan yang digiling lembut yang dicampur tepung kanji atau tepung sagu, serta komposisi beberapa bahan lain seperti telur, bawang putih yang dihaluskan, penyedap rasa, dan garam', 'Pek_Empek_Kapal_Selam2.jpg', 'Ready'),
-(5, 'Ice Tea', 'Ice', 4000, 0, 'Es teh atau Teh es adalah teh yang didinginkan dengan es batu. Es teh sering kali ditambahkan rasa seperti melati, dan buah-buahan seperti limun, ceri, dan arbei, atau susu.', 'es_teh4.jpg', 'Ready'),
-(6, 'Cappuccino', 'Hot', 20000, 0, 'Kapucino adalah minuman khas Italia yang dibuat dari espreso dan susu, tetapi referensi lain juga ada yang menyebutkan bahwa kapucino berawal dari biji biji kopi tentara Turki yang tertinggal setelah peperangan yang di pimpin oleh Kara Mustapha Pasha di Wina, Austria melawan tentara gabungan Polandia-Germania', 'Cappuccino-PNG-File1.png', 'Ready');
+(1, 'Indomie Goreng', 'Makanan', 15000, 0, 'Indomie Goreng Jaju Coffe berisikan telur mata sapi, krupuk, tomat, timun dan sayuran', 'mie-goreng.jpg', 'Ready'),
+(2, 'Indomie Kuah', 'Makanan', 15000, 0, 'Indomie Kuah Jaju Coffe berisikan telur dan sayuran', 'mie-kuah.jpg', 'Ready'),
+(3, 'Nasi Goreng', 'Makanan', 17000, 0, 'Nasi goreng Jaju Coffee dibuat dengan menggunakan nasi, telur, sayuran dan daging ayam yang diaduk rata', 'nasi-goreng.jpg', 'Ready'),
+(4, 'Kentang Goreng', 'Makanan', 15000, 0, 'Kentang Goreng yang disajikan dengan saus tomat dan mayones', 'kentang-goreng.jpg', 'Ready'),
+(5, 'Ice Tea', 'Ice', 8000, 0, 'Es teh atau Teh es adalah teh yang disajikan dengan air dan es batu. Es teh sering kali ditambahkan rasa seperti melati, dan buah-buahan seperti limun, ceri, dan arbei, atau susu.', 'ice-tea.jpg', 'Ready'),
+(6, 'Americano', 'Hot', 19000, 0, 'Americano merupakan kopi yang terbuat dari satu sloki espresso dan 8 ons air panas', 'americano-coffee.png', 'Ready'),
+(7, 'Caffe Latte', 'Hot', 20000, 0, 'minuman yang berasal dari Italia yang berarti Kopi Susu. Minuman yang berbahan dasar espresso, dan susu dengan perbandingan 2:1 antara susu dan kopi. Latte atau Caffe Latte sekarang ini sedang banyak digemari oleh anak muda yang memiliki kecintaan kepada kopi tetapi tidak kuat dengan pekatnya kandungan kopi.', 'caffe-late.png', 'Ready');
 
 -- --------------------------------------------------------
 
@@ -99,8 +100,7 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id_user`, `email`, `username`, `password`, `role_id`) VALUES
-(1, 'admin@gmail.com', 'admin', 'admin', 1),
-(2, 'admin2@gmail.com', 'admin2', '1234', 2);
+(1, 'admin@gmail.com', 'admin', 'admin', 1);
 
 --
 -- Indexes for dumped tables

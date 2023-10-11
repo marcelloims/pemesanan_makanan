@@ -40,7 +40,7 @@ if (isset($session)) {
   $_SESSION['FULLNAME'] = $fbfullname;
   $_SESSION['EMAIL'] =  $femail;
   /* ---- header location after session ----*/
-  header("Location: localhost/pemesanan_makanan/pelayan/c_pelayan/data_makanan");
+  header("Location: localhost/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan");
 } else {
   $loginUrl = $helper->getLoginUrl();
   header("Location: " . $loginUrl);

@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="<?= base_url() ?>pelayan/c_pelayan/data_makanan"><b>Jaju</b> Coffee</a>
+            <a href="<?= base_url() ?>pelanggan/c_pelanggan/data_makanan"><b>Jaju</b> Coffee</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
