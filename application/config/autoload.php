@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'cart', 'form_validation', 'email', 'session', 'pagination', 'Ciqrcode');
+$autoload['libraries'] = array('database' ,'cart', 'form_validation', 'email', 'session', 'pagination', 'Ciqrcode');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,8 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'form', 'date', 'file', 'security');
+$autoload['helper'] = array('url', 'file');
+$autoload['helper'] = array('url','form', 'date', 'file', 'security');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +133,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Model_admin', 'Model_pelayan', 'Model_auth');
+$autoload['model'] = array('Model_admin', 'Model_pelanggan', 'Model_auth');

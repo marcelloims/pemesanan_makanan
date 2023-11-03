@@ -108,20 +108,15 @@
             <!-- Main content -->
         </div>
 
-
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
-            </div>
-        </footer>
-
         <!-- Control Sidebar -->
         <?php $this->load->view('_templates_admin/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+	<!--Footer start -->
+	<?php $this->load->view('_templates_admin/footer'); ?>
+	<!--Footer end -->
 
     <!-- jQuery -->
     <?php $this->load->view('_templates_admin/js'); ?>

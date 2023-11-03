@@ -34,7 +34,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-3">
-							<?php $code = 'http://localhost:8080/pemesanan_makanan/pelayan/c_pelayan/data_makanan'; ?>
+							<?php $code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan'; ?>
 							<img src="<?= site_url('admin/c_admin/qrcode') ?>" alt="QR-Code" class="">
 						</div>
 						<div class="col-2 ml-5">
@@ -46,28 +46,21 @@
 			<!-- Main content -->
 		</div>
 
-
-
-
-		<footer class="main-footer">
-			<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-			All rights reserved.
-			<div class="float-right d-none d-sm-inline-block">
-				<b>Version</b> 3.0.5
-			</div>
-		</footer>
-
 		<!-- Control Sidebar -->
 		<?php $this->load->view('_templates_admin/control-sidebar') ?>
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
 
+	<!--Footer start -->
+		<?php $this->load->view('_templates_admin/footer'); ?>
+	<!--Footer end -->
+
 	<!-- jQuery -->
 	<?php $this->load->view('_templates_admin/js'); ?>
 	<script type="text/javascript">
 		function onScanSuccess() {
-			window.location = '<?= base_url('pelayan/c_pelayan/data_makanan') ?>';
+			window.location = '<?= base_url('pelanggan/c_pelanggan/data_makanan') ?>';
 		}
 		var html5QrcodeScanner = new Html5QrcodeScanner(
 			"qr-reader", {

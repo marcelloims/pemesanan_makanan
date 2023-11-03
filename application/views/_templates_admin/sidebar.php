@@ -8,21 +8,40 @@
 
 	<!-- Sidebar -->
 	<div class="sidebar">
-		<!-- Sidebar user panel (optional) -->
-		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-		</div>
 
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
-			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+			<ul class="nav nav-pills nav-sidebar flex-column" class="sidebar-menu" data-widget="treeview" role="menu" data-accordion="false">
 				<!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-				<li class="nav-item has-treeview menu-open">
-					<a href="#" class="nav-link active">
+				<li class="nav-item" >
+					<a href="<?= base_url() ?>admin/c_admin/dashboard" <?= $this->uri->segment(3) ==  'dashboard' ? 'class="nav-link active"': '' ?> class="nav-link">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
-						<p>
-							Menu
-							<i class="right fas fa-angle-left"></i>
-						</p>
+						<p>Dashboard</p>
+					</a>
+				</li>
+				<li class="nav-header">MENU</li>
+				<li class="nav-item">
+					<a href="<?= base_url() ?>admin/c_admin/data_makanan"<?= $this->uri->segment(3) ==  'data_makanan' ? 'class="nav-link active"': '' ?> class="nav-link">
+						<i class="far fa-circle nav-icon"></i>
+						<p>Data Makanan</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url() ?>admin/c_admin/data_minuman" <?= $this->uri->segment(3) ==  'data_minuman' ? 'class="nav-link active"': '' ?> class="nav-link">
+						<i class="far fa-circle nav-icon"></i>
+						<p>Data Minuman</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url() ?>admin/c_admin/data_pesanan" <?= $this->uri->segment(3) ==  'data_pesanan' ? 'class="nav-link active"': '' ?> class="nav-link">
+						<i class="far fa-circle nav-icon"></i>
+						<p>Data Pesanan</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url() ?>admin/c_admin/viewQR" <?= $this->uri->segment(3) ==  'viewQR' ? 'class="nav-link active"': '' ?> class="nav-link">
+						<i class="far fa-circle nav-icon"></i>
+						<p>Print QR Menu</p>
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">

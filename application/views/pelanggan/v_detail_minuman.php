@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_pelanggan/header') ?>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-collapse layout-top-nav">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_pelanggan/navbar') ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-                <div class="container-fluid">
+                <div class="container text-center">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Detail Minuman</h1>
+                        <div class="col-sm-12 text-center">
+                            <h1 class="m-0 text-dark"> Detail <small>Minuman</small></h1>
                         </div>
                     </div>
                 </div>
@@ -30,7 +33,7 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
+            <div class="content">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
@@ -39,11 +42,11 @@
                         <div class="col-md-7">
                             <table class="table">
                                 <tr>
-                                    <td width="200px">Nama Minuman</td>
+                                    <td width="200px">Nama Produk</td>
                                     <td><strong><?php echo $minuman['nama_menu']; ?></strong></td>
                                 </tr>
                                 <tr>
-                                    <td width="200px">Status Minuman</td>
+                                    <td width="200px">Status minuman</td>
                                     <td><strong><?php echo $minuman['status']; ?></strong></td>
                                 </tr>
                                 <tr>
@@ -56,28 +59,24 @@
                                 </tr>
                             </table>
 
-                            <?php echo anchor('admin/c_admin/data_minuman/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                            <?php echo anchor('pelanggan/c_pelanggan/minuman_dingin/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- Main content -->
+            </div>
+            <!-- /.content -->
         </div>
+        <!-- /.content-wrapper -->
 
-        <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
-        <!-- /.control-sidebar -->
+        <!-- Main Footer -->
+        <?php $this->load->view('_templates_pelanggan/footer') ?>
     </div>
     <!-- ./wrapper -->
 
-	<!--Footer start -->
-		<?php $this->load->view('_templates_admin/footer'); ?>
-	<!--Footer end -->
-
+    <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
-    <!-- jQuery -->
+    <?php $this->load->view('_templates_pelanggan/js') ?>
 </body>
 
 </html>
