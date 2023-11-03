@@ -40,10 +40,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								<tr align="center">
 									<th>No Meja</th>
 									<td><input type="number" min="1" name="meja" class="form-control" required></td>
+									<td>
+										<select name="status" class="form-control" required>
+											<option selected disabled> --- Mau makan dimana ? ---</option>
+											<option value="Ditempat">Ditempat</option>
+											<option value="Dibukus">Dibukus</option>
+										</select>
+									</td>
 								</tr>
 								<tr align="center">
 									<th>No</th>
 									<th>Nama Produk</th>
+									<th>Toping</th>
 									<th>Jumlah</th>
 									<th>Harga</th>
 									<th colspan="2">Sub Total</th>
@@ -57,6 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									<tr>
 										<td align="center"><?php echo $no++ ?></td>
 										<td><?php echo $items['name'] ?></td>
+										<td align="center"><?php echo $items['toping'] ?></td>
 										<td align="center">
 											<!-- <input type="number" class="form-control text-center" id="qty" min="1" name="qty" value="<?= number_format($items['qty']) ?>" onchange="update_cart(this.value, '<?= $items['rowid'] ?>')"> -->
 											<?= number_format($items['qty']) ?>

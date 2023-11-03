@@ -9,6 +9,11 @@ class Model_admin extends CI_Model
         return $this->db->get('tb_menus');
     }
 
+	public function data_toping()
+    {
+        return $this->db->get('tb_toping');
+    }
+
     public function total_makanan()
     {
         return $this->db->get_where('tb_menus', ['kategori' => 'Makanan']);
@@ -58,6 +63,11 @@ class Model_admin extends CI_Model
     }
 
     public function tambah_makanan($data, $table)
+    {
+        $this->db->insert($table, $data);
+    }
+
+	public function tambah_toping($data, $table)
     {
         $this->db->insert($table, $data);
     }
@@ -220,5 +230,16 @@ class Model_admin extends CI_Model
     {
         $this->db->where($where);
         $this->db->update($table, $data);
+    }
+
+	public function edit_toping($where, $table)
+    {
+        return $this->db->get_where($table, $where)->row();
+    }
+
+	public function update_toping($where, $data, $table)
+    {
+        $this->db->where($where);
+    	return $this->db->update($table, $data);
     }
 }

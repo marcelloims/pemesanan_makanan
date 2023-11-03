@@ -74,6 +74,18 @@
                                     <label for="">Foto</label>
                                     <input type="file" class="file-control" name="foto" value="">
                                 </div>
+								<div class="form-group">
+                                    <label for="">Toping</label>
+                                    <select name="toping" class="form-control">
+                                        <?php foreach ($toping as $top) : ?>
+                                            <?php if ($top == $minuman->toping) : ?>
+                                                <option value="<?= $top ?>" selected><?= $top ?></option>
+                                            <?php else : ?>
+                                                <option value="<?= $top ?>"><?= $top ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Status minuman</label>
                                     <select name="status" class="form-control">

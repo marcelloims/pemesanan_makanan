@@ -262,6 +262,7 @@ class C_admin extends CI_Controller
 			'harga'             => $harga,
 			'deskripsi'         => $deskripsi,
 			'foto'              => $foto_makanan,
+			'toping'            => 0,
 			'status'            => "Ready"
 		];
 
@@ -283,6 +284,7 @@ class C_admin extends CI_Controller
 		$data['minuman']	= $this->Model_admin->edit_minuman($where, 'tb_menus');
 		$data['status'] 	= ['Ready', 'Kosong'];
 		$data['kategori']	= ['Ice', 'Hot'];
+		$data['toping']		= ["Tidak", "Ya"];
 		$this->load->view('admin/v_edit_minuman', $data);
 	}
 
@@ -295,6 +297,7 @@ class C_admin extends CI_Controller
 		$promo          = $this->input->post('promo');
 		$deskripsi      = $this->input->post('deskripsi');
 		$status         = $this->input->post('status');
+		$toping			= $this->input->post('toping');
 		$foto_makanan   = $_FILES['foto']['name'];
 		if ($foto_makanan = '') {
 		} else {
@@ -317,6 +320,7 @@ class C_admin extends CI_Controller
 			'promo'             => $promo,
 			'deskripsi'         => $deskripsi,
 			'foto'              => $foto_makanan,
+			'toping'            => $toping,
 			'status'            => $status
 		];
 
@@ -418,5 +422,51 @@ class C_admin extends CI_Controller
 	public function printQR()
 	{
 		$this->load->view('admin/v_print_QRCode');
+	}
+
+	public function data_toping()
+	{
+		$data['toping'] = $this->Model_admin->data_toping()->result();
+		$this->load->view('admin/v_data_toping', $data);
+	}
+
+	public function tambah_toping()
+	{
+		$data = [
+			'nama' => $this->input->post('nama'),
+			"status" => "Ready"
+		];
+		$this->Model_admin->tambah_toping($data, 'tb_toping');
+		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
+		redirect('admin/c_admin/data_toping');
+	}
+
+	public function edit_toping($id)
+	{
+		$where = ['id' => $id];
+		$data['status'] 	= ['Ready', 'Kosong'];
+		$data['toping'] = $this->Model_admin->edit_toping($where, 'tb_toping');
+		
+		$this->load->view('admin/v_edit_toping',$data);
+	}
+
+	public function update_toping()
+	{
+		$where = ['id' => $this->input->post('id')];
+		$data = [
+			'nama' 		=> $this->input->post('nama'),
+			'status'	=> $this->input->post('status')
+		];
+		$this->Model_admin->update_toping($where, $data, 'tb_toping');
+		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
+		redirect('admin/c_admin/data_toping');
+	}
+
+	public function delete_toping($id)
+	{
+		$where = ['id' => $id];
+		$this->Model_admin->delete_makanan($where, 'tb_toping');
+		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
+		redirect('admin/c_admin/data_toping');
 	}
 }

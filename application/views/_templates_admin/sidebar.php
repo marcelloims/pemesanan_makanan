@@ -44,6 +44,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a href="<?= base_url() ?>admin/c_admin/data_toping" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Data Toping</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="<?= base_url() ?>admin/c_admin/data_pesanan" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Data Pesanan</p>

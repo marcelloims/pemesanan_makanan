@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="row">
                                         <!-- accepted payments column -->
                                         <div class="col-6">
-                                            <p class="lead">Payment Methods:</p>
+                                            <!-- <p class="lead">Payment Methods:</p>
                                             <img src="<?= base_url() ?>assets/dist/img/credit/visa.png" alt="Visa">
                                             <img src="<?= base_url() ?>assets/dist/img/credit/mastercard.png" alt="Mastercard">
                                             <img src="<?= base_url() ?>assets/dist/img/credit/american-express.png" alt="American Express">
@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
                                                 plugg
                                                 dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                                            </p>
+                                            </p> -->
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-6">

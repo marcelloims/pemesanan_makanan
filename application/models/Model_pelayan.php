@@ -46,10 +46,16 @@ class Model_pelayan extends CI_Model
         }
     }
 
+	public function data_toping()
+    {
+        return $this->db->get('tb_toping');
+    }
+
     public function proses_pesan()
     {
 
         $meja = $this->input->post('meja');
+        $status = $this->input->post('status');
 
         $jumlah_pesanan = $this->db->get('tb_orders')->num_rows();
         $t = $jumlah_pesanan + 1;
@@ -59,6 +65,7 @@ class Model_pelayan extends CI_Model
             'tanggal_invoice'   => date('Y-m-d H:i:s'),
             'status_pesanan'    => "Dalam Proses",
             'meja'              => $meja,
+			'status'			=> $status
             // 'id_user'           => $this->session->userdata('id_user'),
             // 'nama_pelayan'      => $this->session->userdata('username')
         ];
@@ -72,6 +79,7 @@ class Model_pelayan extends CI_Model
                 'no_invoice' => $kode,
                 'kode'       => $data['id'],
                 'nama'       => $data['name'],
+				'toping'	 => $data['toping'],
                 'meja'       => $meja,
                 'qty'        => $data['qty'],
                 'harga'      => $data['price'],
