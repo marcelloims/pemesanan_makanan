@@ -66,10 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<td align="center"><?php echo $no++ ?></td>
 										<td><?php echo $items['name'] ?></td>
 										<td align="center"><?php echo $items['toping'] ?></td>
-										<td align="center">
-											<!-- <input type="number" class="form-control text-center" id="qty" min="1" name="qty" value="<?= number_format($items['qty']) ?>" onchange="update_cart(this.value, '<?= $items['rowid'] ?>')"> -->
-											<?= number_format($items['qty']) ?>
-										</td>
+										<td align="center"><?= number_format($items['qty']) ?></td>
 										<td align="right">Rp. <?php echo number_format($items['price'], 0, ',', '.') ?></td>
 										<td align="right">Rp. <?php echo number_format($items['subtotal'], 0, ',', '.') ?></td>
 										<td align="center"><a href="<?= base_url('pelanggan/c_pelanggan/hapus_items/' . $items['rowid']) ?>"><i class="fa fa-close btn btn-danger"></i></a></td>

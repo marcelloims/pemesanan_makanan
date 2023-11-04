@@ -36,6 +36,10 @@ class C_auth extends CI_Controller
                         break;
                     case '2':
                         redirect('pelanggan/c_pelanggan/data_makanan');
+						break;
+					case '3':
+						redirect('kitchen/c_kitchen/dashboard');
+						break;
                     default:
                         break;
                 }

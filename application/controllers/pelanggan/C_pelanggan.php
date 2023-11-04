@@ -21,6 +21,7 @@ class C_pelanggan extends CI_Controller
 	public function data_makanan()
 	{
 		$data['makanan'] = $this->Model_pelanggan->data_makanan()->result();
+		$data['toping']	= $this->Model_pelanggan->data_toping()->result();
 		$this->load->view('pelanggan/v_data_makanan', $data);
 	}
 
@@ -32,16 +33,16 @@ class C_pelanggan extends CI_Controller
 
 	public function minuman_dingin()
 	{
-		$data['minuman']	= $this->Model_pelayan->minuman_dingin()->result();
-		$data['toping']		= $this->Model_pelayan->data_toping()->result();
-		$this->load->view('pelayan/v_minuman_dingin', $data);
+		$data['minuman']	= $this->Model_pelanggan->minuman_dingin()->result();
+		$data['toping']		= $this->Model_pelanggan->data_toping()->result();
+		$this->load->view('pelanggan/v_minuman_dingin', $data);
 	}
 
 	public function minuman_panas()
 	{
-		$data['minuman'] 	= $this->Model_pelayan->minuman_panas()->result();
-		$data['toping']		= $this->Model_pelayan->data_toping()->result();
-		$this->load->view('pelayan/v_minuman_panas', $data);
+		$data['minuman'] 	= $this->Model_pelanggan->minuman_panas()->result();
+		$data['toping']		= $this->Model_pelanggan->data_toping()->result();
+		$this->load->view('pelanggan/v_minuman_panas', $data);
 	}
 
 	public function detail_minuman($id)
@@ -61,15 +62,17 @@ class C_pelanggan extends CI_Controller
 	{
 		$menu 	= $this->Model_pelanggan->find($id);
 		$qty	= $this->input->post('qty_item');
+		$toping	= $this->input->post('toping');
 
 		$harga = $menu->promo == 0 ? $menu->harga : $menu->promo;
 
 		$data = [
-			'id'      => $menu->kode_menu,
-			'qty'     => $qty,
-			'price'   => $harga,
-			'name'    => $menu->nama_menu,
-			'kategori' => $menu->kategori
+			'id'      	=> $menu->kode_menu,
+			'qty'     	=> $qty,
+			'price'   	=> $harga,
+			'name'    	=> $menu->nama_menu,
+			'kategori' 	=> $menu->kategori,
+			'toping'	=> $toping
 		];
 
 		$this->cart->insert($data);

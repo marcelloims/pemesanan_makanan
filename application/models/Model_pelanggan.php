@@ -65,7 +65,8 @@ class Model_pelanggan extends CI_Model
             'tanggal_invoice'   => date('Y-m-d H:i:s'),
             'status_pesanan'    => "Dalam Proses",
             'meja'              => $meja,
-			'status'			=> $status
+			'status'			=> $status,
+			'status_pembuatan'	=> "Proses"
             // 'id_user'           => $this->session->userdata('id_user'),
             // 'nama_pelanggan'      => $this->session->userdata('username')
         ];

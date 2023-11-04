@@ -64,6 +64,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<div class="row justify-content-center">
 												<div class="col-5 text-center">
 													<input type="number" min="1" name="qty_item" class="form-control" placeholder="qty" required>
+													<?php if($mmn->toping == "Ya") :?>
+														<?php foreach ($toping as $top) :?>
+															<input type="radio" name="toping" id="<?= $top->id ?>" value="<?= $top->nama ?>"><?= $top->nama ?><br/>
+														<?php endforeach; ?>
+													<?php endif; ?>
 												</div>
 											</div>
 											<div class="card-footer text-center bg-white">
