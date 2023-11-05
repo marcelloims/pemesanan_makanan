@@ -248,4 +248,11 @@ class Model_admin extends CI_Model
 		$this->db->where($where);
     	return $this->db->update($table, $data);
 	}
+
+	public function laporan($tanggal_awal, $tanggal_akhir)
+	{
+		$this->db->like('tanggal_invoice', $tanggal_awal);
+		$this->db->or_like('tanggal_invoice', $tanggal_akhir);
+		return $this->db->get('tb_orders');
+	}
 }
