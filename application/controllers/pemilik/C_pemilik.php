@@ -446,8 +446,8 @@ class C_pemilik extends CI_Controller
 		$where = ['id' => $id];
 		$data['status'] 	= ['Ready', 'Kosong'];
 		$data['toping'] = $this->Model_admin->edit_toping($where, 'tb_toping');
-		
-		$this->load->view('pemilik/v_edit_toping',$data);
+
+		$this->load->view('pemilik/v_edit_toping', $data);
 	}
 
 	public function update_toping()
@@ -472,17 +472,21 @@ class C_pemilik extends CI_Controller
 
 	public function laporan()
 	{
-		$this->load->view('pemilik/laporan');
+		$tanggal_awal 	= $this->input->get('tanggal_awal');
+		$tanggal_akhir 	= $this->input->get('tanggal_akhir');
+		$data['data'] = [];
+		$data['date']	= [$tanggal_awal, $tanggal_akhir];
+
+		$this->load->view('pemilik/laporan', $data);
 	}
 
 	public function hasil_laporan()
 	{
-		$tanggal_awal 	= $this->input->post('tanggal_awal');
-		$tanggal_akhir 	= $this->input->post('tanggal_akhir');
+		$tanggal_awal 	= $this->input->get('tanggal_awal');
+		$tanggal_akhir 	= $this->input->get('tanggal_akhir');
 
-		$data['data'] = $this->Model_admin->laporan($tanggal_awal, $tanggal_akhir)->result();
-		// print_r($data);die;
-
+		$data['data'] 	= $this->Model_admin->laporan($tanggal_awal, $tanggal_akhir)->result();
+		$data['date']	= [$tanggal_awal, $tanggal_akhir];
 		$this->load->view('pemilik/laporan', $data);
 	}
 }

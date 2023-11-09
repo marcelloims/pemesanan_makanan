@@ -32,18 +32,18 @@
 			<!-- Main content -->
 			<section class="content">
 				<div class="container">
-					<form action="<?= base_url('pemilik/c_pemilik/hasil_laporan') ?>" method="POST">
+					<form action="<?= base_url('pemilik/c_pemilik/hasil_laporan') ?>" method="get">
 						<div class="row">
 							<div class="col-5">
 								<div class="form-group">
 									<label for="">Tanggal Awal</label>
-									<input type="date" class="form-control" name="tanggal_awal">
+									<input type="date" class="form-control" name="tanggal_awal" value="<?= $date[0] ?>">
 								</div>
 							</div>
 							<div class="col-4">
 								<div class="form-group">
 									<label for="">Tanggal Akhir</label>
-									<input type="date" class="form-control" name="tanggal_akhir">
+									<input type="date" class="form-control" name="tanggal_akhir" value="<?= $date[1] ?>">
 								</div>
 							</div>
 							<div class="col-2">
@@ -53,22 +53,48 @@
 							</div>
 						</div>
 					</form>
-					<div class="row">
-					<table id="example1" class="table table-hover">
-						<thead>
-							<tr align="center">
-								<th scope="col">#</th>
-								<th scope="col">No Invoice</th>
-								<th scope="col">Tanggal</th>
-								<th scope="col">Total Invoice</th>
-								<th scope="col">Status</th>
-							</tr>
-						</thead>
-						<tbody id="target">
-						</tbody>
-					</table>
-					</div>
+					<?php if ($data) : ?>
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<table id="example1" class="table table-hover">
+										<thead>
+											<tr align="center">
+												<th scope="col">#</th>
+												<th scope="col">No Invoice</th>
+												<th scope="col">Tanggal</th>
+												<th scope="col">Total Invoice</th>
+												<th scope="col">Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+											$no = 1;
+											$totalInvoice = 0;
+											foreach ($data  as $item) : ?>
+												<tr align="center">
+													<td><?= $no++ ?></td>
+													<td><?= $item->no_invoice ?></td>
+													<td><?= $item->tanggal_invoice ?></td>
+													<td>Rp. <?= number_format($item->total, '0', ',', '.') ?></td>
+													<td><?= $item->status_pesanan ?></td>
+												</tr>
+											<?php
+												$totalInvoice += $item->total;
+											endforeach; ?>
+										</tbody>
+										<tfoot>
+											<tr class="text-bold">
+												<td align="center" colspan="4">Grand Total</td>
+												<td align="left">Rp. <?= number_format($totalInvoice, 0, ',', '.') ?></td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
 				</div>
+			<?php endif; ?>
 			</section>
 			<!-- Main content -->
 		</div>
@@ -80,7 +106,7 @@
 	<!-- ./wrapper -->
 
 	<!--Footer start -->
-		<?php $this->load->view('_templates_pemilik/footer'); ?>
+	<?php $this->load->view('_templates_pemilik/footer'); ?>
 	<!--Footer end -->
 
 	<!-- jQuery -->
