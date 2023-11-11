@@ -33,14 +33,14 @@
 			<section class="content">
 				<div class="container">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+					<!-- <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
 						<i class="fas fa-plus"> Data Toping</i>
-					</button>
+					</button> -->
 					<p class="login-box-msg"><?= $this->session->flashdata('pesan1') ?></p>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
 
 					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -64,7 +64,7 @@
 								</form>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<table id="example1" class="table table-hover">
 						<thead>
 							<tr align="center">

@@ -78,62 +78,62 @@ class C_admin extends CI_Controller
 		echo json_encode($dataMenu);
 	}
 
-	public function tambah_makanan()
-	{
-		$kode_menu      = $this->input->post('kode_menu');
-		$nama_menu      = $this->input->post('nama_menu');
-		$harga          = $this->input->post('harga');
-		$deskripsi      = $this->input->post('deskripsi');
+	// public function tambah_makanan()
+	// {
+	// 	$kode_menu      = $this->input->post('kode_menu');
+	// 	$nama_menu      = $this->input->post('nama_menu');
+	// 	$harga          = $this->input->post('harga');
+	// 	$deskripsi      = $this->input->post('deskripsi');
 
-		$this->form_validation->set_rules('nama_menu', 'Nama Makanan', 'required', ['required' => "Nama makanan tidak boleh kosong!"]);
-		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => "Harga tidak boleh kosong!"]);
-		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', ['required' => "Deskripsi tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('nama_menu', 'Nama Makanan', 'required', ['required' => "Nama makanan tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => "Harga tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', ['required' => "Deskripsi tidak boleh kosong!"]);
 
-		$foto_makanan   = $_FILES['foto']['name'];
-		if ($foto_makanan == null) {
-			$this->form_validation->set_rules('foto', 'Foto', 'required', ['required' => "Foto tidak boleh kosong!"]);
-		} else {
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+	// 	$foto_makanan   = $_FILES['foto']['name'];
+	// 	if ($foto_makanan == null) {
+	// 		$this->form_validation->set_rules('foto', 'Foto', 'required', ['required' => "Foto tidak boleh kosong!"]);
+	// 	} else {
+	// 		$config['upload_path'] = './uploads';
+	// 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('foto')) {
-				echo "Gambar Gagal di Upload";
-			} else {
-				$foto_makanan = $this->upload->data('file_name');
-			}
-		}
+	// 		$this->load->library('upload', $config);
+	// 		if (!$this->upload->do_upload('foto')) {
+	// 			echo "Gambar Gagal di Upload";
+	// 		} else {
+	// 			$foto_makanan = $this->upload->data('file_name');
+	// 		}
+	// 	}
 
-		if ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('pesan1', '
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<strong>Proses Gagal</strong> Silahkan cek form pengisian.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			');
-			$this->session->set_flashdata('nama_menu', form_error('nama_menu'));
-			$this->session->set_flashdata('harga', form_error('harga'));
-			$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
-			$this->session->set_flashdata('foto', form_error('foto'));
-			redirect('admin/c_admin/data_makanan');
-		}
+	// 	if ($this->form_validation->run() == FALSE) {
+	// 		$this->session->set_flashdata('pesan1', '
+	// 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	// 		<strong>Proses Gagal</strong> Silahkan cek form pengisian.
+	// 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 			<span aria-hidden="true">&times;</span>
+	// 		</button>
+	// 		</div>
+	// 		');
+	// 		$this->session->set_flashdata('nama_menu', form_error('nama_menu'));
+	// 		$this->session->set_flashdata('harga', form_error('harga'));
+	// 		$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
+	// 		$this->session->set_flashdata('foto', form_error('foto'));
+	// 		redirect('admin/c_admin/data_makanan');
+	// 	}
 
-		$data = [
-			'kode_menu'         => $kode_menu,
-			'nama_menu'         => $nama_menu,
-			'kategori'          => "Makanan",
-			'harga'             => $harga,
-			'deskripsi'         => $deskripsi,
-			'foto'              => $foto_makanan,
-			'status'            => "Ready"
-		];
+	// 	$data = [
+	// 		'kode_menu'         => $kode_menu,
+	// 		'nama_menu'         => $nama_menu,
+	// 		'kategori'          => "Makanan",
+	// 		'harga'             => $harga,
+	// 		'deskripsi'         => $deskripsi,
+	// 		'foto'              => $foto_makanan,
+	// 		'status'            => "Ready"
+	// 	];
 
-		$this->Model_admin->tambah_makanan($data, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('admin/c_admin/data_makanan');
-	}
+	// 	$this->Model_admin->tambah_makanan($data, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil disimpan');
+	// 	redirect('admin/c_admin/data_makanan');
+	// }
 
 	public function detail_makanan($id)
 	{
@@ -142,62 +142,62 @@ class C_admin extends CI_Controller
 		$this->load->view('admin/v_detail_makanan', $data);
 	}
 
-	public function edit_makanan($id)
-	{
-		$where = ['kode_menu' => $id];
-		$data['makanan'] = $this->Model_admin->edit_makanan($where, 'tb_menus');
+	// public function edit_makanan($id)
+	// {
+	// 	$where = ['kode_menu' => $id];
+	// 	$data['makanan'] = $this->Model_admin->edit_makanan($where, 'tb_menus');
 
-		$data['status'] = ['Ready', 'Kosong'];
-		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		$this->load->view('admin/v_edit_makanan', $data);
-	}
+	// 	$data['status'] = ['Ready', 'Kosong'];
+	// 	$this->session->set_flashdata('pesan', 'Berhasil diupdate');
+	// 	$this->load->view('admin/v_edit_makanan', $data);
+	// }
 
-	public function update_makanan()
-	{
-		$kode_menu      = $this->input->post('kode_menu');
-		$nama_menu      = $this->input->post('nama_menu');
-		$harga          = $this->input->post('harga');
-		$promo        	= $this->input->post('promo');
-		$deskripsi      = $this->input->post('deskripsi');
-		$status         = $this->input->post('status');
-		$foto_makanan   = $_FILES['foto']['name'];
-		if ($foto_makanan = '') {
-		} else {
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+	// public function update_makanan()
+	// {
+	// 	$kode_menu      = $this->input->post('kode_menu');
+	// 	$nama_menu      = $this->input->post('nama_menu');
+	// 	$harga          = $this->input->post('harga');
+	// 	$promo        	= $this->input->post('promo');
+	// 	$deskripsi      = $this->input->post('deskripsi');
+	// 	$status         = $this->input->post('status');
+	// 	$foto_makanan   = $_FILES['foto']['name'];
+	// 	if ($foto_makanan = '') {
+	// 	} else {
+	// 		$config['upload_path'] = './uploads';
+	// 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('foto')) {
-				echo "Gambar Gagal di Upload";
-			} else {
-				$foto_makanan = $this->upload->data('file_name');
-			}
-		}
+	// 		$this->load->library('upload', $config);
+	// 		if (!$this->upload->do_upload('foto')) {
+	// 			echo "Gambar Gagal di Upload";
+	// 		} else {
+	// 			$foto_makanan = $this->upload->data('file_name');
+	// 		}
+	// 	}
 
-		$data = [
-			'kode_menu'         => $kode_menu,
-			'nama_menu'         => $nama_menu,
-			'kategori'          => "Makanan",
-			'harga'             => $harga,
-			'promo'             => $promo,
-			'deskripsi'         => $deskripsi,
-			'foto'              => $foto_makanan,
-			'status'            => $status
-		];
+	// 	$data = [
+	// 		'kode_menu'         => $kode_menu,
+	// 		'nama_menu'         => $nama_menu,
+	// 		'kategori'          => "Makanan",
+	// 		'harga'             => $harga,
+	// 		'promo'             => $promo,
+	// 		'deskripsi'         => $deskripsi,
+	// 		'foto'              => $foto_makanan,
+	// 		'status'            => $status
+	// 	];
 
-		$where = ['kode_menu' => $kode_menu];
-		$this->Model_admin->update_makanan($where, $data, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('admin/c_admin/data_makanan');
-	}
+	// 	$where = ['kode_menu' => $kode_menu];
+	// 	$this->Model_admin->update_makanan($where, $data, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil diupdate');
+	// 	redirect('admin/c_admin/data_makanan');
+	// }
 
-	public function delete_makanan($id)
-	{
-		$where = ['kode_menu' => $id];
-		$this->Model_admin->delete_makanan($where, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
-		redirect('admin/c_admin/data_makanan');
-	}
+	// public function delete_makanan($id)
+	// {
+	// 	$where = ['kode_menu' => $id];
+	// 	$this->Model_admin->delete_makanan($where, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil dihapus');
+	// 	redirect('admin/c_admin/data_makanan');
+	// }
 
 
 
@@ -210,66 +210,66 @@ class C_admin extends CI_Controller
 		$this->load->view('admin/v_data_minuman', $data);
 	}
 
-	public function tambah_minuman()
-	{
-		$kode_menu      = $this->input->post('kode_menu');
-		$nama_menu      = $this->input->post('nama_menu');
-		$kategori		= $this->input->post('kategori');
-		$harga          = $this->input->post('harga');
-		$deskripsi      = $this->input->post('deskripsi');
+	// public function tambah_minuman()
+	// {
+	// 	$kode_menu      = $this->input->post('kode_menu');
+	// 	$nama_menu      = $this->input->post('nama_menu');
+	// 	$kategori		= $this->input->post('kategori');
+	// 	$harga          = $this->input->post('harga');
+	// 	$deskripsi      = $this->input->post('deskripsi');
 
-		$this->form_validation->set_rules('nama_menu', 'Nama Makanan', 'required', ['required' => "Nama makanan tidak boleh kosong!"]);
-		$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => "Kategori tidak boleh kosong!"]);
-		$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => "Harga tidak boleh kosong!"]);
-		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', ['required' => "Deskripsi tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('nama_menu', 'Nama Makanan', 'required', ['required' => "Nama makanan tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('kategori', 'Kategori', 'required', ['required' => "Kategori tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('harga', 'Harga', 'required', ['required' => "Harga tidak boleh kosong!"]);
+	// 	$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', ['required' => "Deskripsi tidak boleh kosong!"]);
 
-		$foto_makanan   = $_FILES['foto']['name'];
-		if ($foto_makanan = '') {
-			$this->form_validation->set_rules('foto', 'Foto', 'required', ['required' => "Foto tidak boleh kosong!"]);
-		} else {
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+	// 	$foto_makanan   = $_FILES['foto']['name'];
+	// 	if ($foto_makanan = '') {
+	// 		$this->form_validation->set_rules('foto', 'Foto', 'required', ['required' => "Foto tidak boleh kosong!"]);
+	// 	} else {
+	// 		$config['upload_path'] = './uploads';
+	// 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('foto')) {
-				echo "Gambar Gagal di Upload";
-			} else {
-				$foto_makanan = $this->upload->data('file_name');
-			}
-		}
+	// 		$this->load->library('upload', $config);
+	// 		if (!$this->upload->do_upload('foto')) {
+	// 			echo "Gambar Gagal di Upload";
+	// 		} else {
+	// 			$foto_makanan = $this->upload->data('file_name');
+	// 		}
+	// 	}
 
-		if ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('pesan1', '
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<strong>Proses Gagal</strong> Silahkan cek form pengisian.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			');
-			$this->session->set_flashdata('nama_menu', form_error('nama_menu'));
-			$this->session->set_flashdata('kategori', form_error('kategori'));
-			$this->session->set_flashdata('harga', form_error('harga'));
-			$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
-			$this->session->set_flashdata('foto', form_error('foto'));
-			redirect('admin/c_admin/data_minuman');
-		}
+	// 	if ($this->form_validation->run() == FALSE) {
+	// 		$this->session->set_flashdata('pesan1', '
+	// 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	// 		<strong>Proses Gagal</strong> Silahkan cek form pengisian.
+	// 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 			<span aria-hidden="true">&times;</span>
+	// 		</button>
+	// 		</div>
+	// 		');
+	// 		$this->session->set_flashdata('nama_menu', form_error('nama_menu'));
+	// 		$this->session->set_flashdata('kategori', form_error('kategori'));
+	// 		$this->session->set_flashdata('harga', form_error('harga'));
+	// 		$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
+	// 		$this->session->set_flashdata('foto', form_error('foto'));
+	// 		redirect('admin/c_admin/data_minuman');
+	// 	}
 
-		$data = [
-			'kode_menu'         => $kode_menu,
-			'nama_menu'         => $nama_menu,
-			'kategori'          => $kategori,
-			'harga'             => $harga,
-			'deskripsi'         => $deskripsi,
-			'foto'              => $foto_makanan,
-			'toping'            => 0,
-			'status'            => "Ready"
-		];
+	// 	$data = [
+	// 		'kode_menu'         => $kode_menu,
+	// 		'nama_menu'         => $nama_menu,
+	// 		'kategori'          => $kategori,
+	// 		'harga'             => $harga,
+	// 		'deskripsi'         => $deskripsi,
+	// 		'foto'              => $foto_makanan,
+	// 		'toping'            => 0,
+	// 		'status'            => "Ready"
+	// 	];
 
-		$this->Model_admin->tambah_minuman($data, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('admin/c_admin/data_minuman');
-	}
+	// 	$this->Model_admin->tambah_minuman($data, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil disimpan');
+	// 	redirect('admin/c_admin/data_minuman');
+	// }
 
 	public function detail_minuman($id)
 	{
@@ -278,65 +278,65 @@ class C_admin extends CI_Controller
 		$this->load->view('admin/v_detail_minuman', $data);
 	}
 
-	public function edit_minuman($id)
-	{
-		$where = ['kode_menu' => $id];
-		$data['minuman']	= $this->Model_admin->edit_minuman($where, 'tb_menus');
-		$data['status'] 	= ['Ready', 'Kosong'];
-		$data['kategori']	= ['Ice', 'Hot'];
-		$data['toping']		= ["Tidak", "Ya"];
-		$this->load->view('admin/v_edit_minuman', $data);
-	}
+	// public function edit_minuman($id)
+	// {
+	// 	$where = ['kode_menu' => $id];
+	// 	$data['minuman']	= $this->Model_admin->edit_minuman($where, 'tb_menus');
+	// 	$data['status'] 	= ['Ready', 'Kosong'];
+	// 	$data['kategori']	= ['Ice', 'Hot'];
+	// 	$data['toping']		= ["Tidak", "Ya"];
+	// 	$this->load->view('admin/v_edit_minuman', $data);
+	// }
 
-	public function update_minuman()
-	{
-		$kode_menu      = $this->input->post('kode_menu');
-		$nama_menu      = $this->input->post('nama_menu');
-		$kategori		= $this->input->post('kategori');
-		$harga          = $this->input->post('harga');
-		$promo          = $this->input->post('promo');
-		$deskripsi      = $this->input->post('deskripsi');
-		$status         = $this->input->post('status');
-		$toping			= $this->input->post('toping');
-		$foto_makanan   = $_FILES['foto']['name'];
-		if ($foto_makanan = '') {
-		} else {
-			$config['upload_path'] = './uploads';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif';
+	// public function update_minuman()
+	// {
+	// 	$kode_menu      = $this->input->post('kode_menu');
+	// 	$nama_menu      = $this->input->post('nama_menu');
+	// 	$kategori		= $this->input->post('kategori');
+	// 	$harga          = $this->input->post('harga');
+	// 	$promo          = $this->input->post('promo');
+	// 	$deskripsi      = $this->input->post('deskripsi');
+	// 	$status         = $this->input->post('status');
+	// 	$toping			= $this->input->post('toping');
+	// 	$foto_makanan   = $_FILES['foto']['name'];
+	// 	if ($foto_makanan = '') {
+	// 	} else {
+	// 		$config['upload_path'] = './uploads';
+	// 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('foto')) {
-				echo "Gambar Gagal di Upload";
-			} else {
-				$foto_makanan = $this->upload->data('file_name');
-			}
-		}
+	// 		$this->load->library('upload', $config);
+	// 		if (!$this->upload->do_upload('foto')) {
+	// 			echo "Gambar Gagal di Upload";
+	// 		} else {
+	// 			$foto_makanan = $this->upload->data('file_name');
+	// 		}
+	// 	}
 
-		$data = [
-			'kode_menu'         => $kode_menu,
-			'nama_menu'         => $nama_menu,
-			'kategori'          => $kategori,
-			'harga'             => $harga,
-			'promo'             => $promo,
-			'deskripsi'         => $deskripsi,
-			'foto'              => $foto_makanan,
-			'toping'            => $toping,
-			'status'            => $status
-		];
+	// 	$data = [
+	// 		'kode_menu'         => $kode_menu,
+	// 		'nama_menu'         => $nama_menu,
+	// 		'kategori'          => $kategori,
+	// 		'harga'             => $harga,
+	// 		'promo'             => $promo,
+	// 		'deskripsi'         => $deskripsi,
+	// 		'foto'              => $foto_makanan,
+	// 		'toping'            => $toping,
+	// 		'status'            => $status
+	// 	];
 
-		$where = ['kode_menu' => $kode_menu];
-		$this->Model_admin->update_minuman($where, $data, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('admin/c_admin/data_minuman');
-	}
+	// 	$where = ['kode_menu' => $kode_menu];
+	// 	$this->Model_admin->update_minuman($where, $data, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil diupdate');
+	// 	redirect('admin/c_admin/data_minuman');
+	// }
 
-	public function delete_minuman($id)
-	{
-		$where = ['kode_menu' => $id];
-		$this->Model_admin->delete_minuman($where, 'tb_menus');
-		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
-		redirect('admin/c_admin/data_minuman');
-	}
+	// public function delete_minuman($id)
+	// {
+	// 	$where = ['kode_menu' => $id];
+	// 	$this->Model_admin->delete_minuman($where, 'tb_menus');
+	// 	$this->session->set_flashdata('pesan', 'Berhasil dihapus');
+	// 	redirect('admin/c_admin/data_minuman');
+	// }
 
 	public function data_pesanan()
 	{

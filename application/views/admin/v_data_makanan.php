@@ -33,13 +33,13 @@
 			<section class="content">
 				<div class="container">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+					<!-- <button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
 						<i class="fas fa-plus"> Data Makanan</i>
-					</button>
+					</button> -->
 					<p class="login-box-msg"><?= $this->session->flashdata('pesan1') ?></p>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
 
-					<!-- Modal -->
+					<!-- Modal
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -80,7 +80,7 @@
 								</form>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<table id="example1" class="table table-hover">
 						<thead>
 							<tr align="center">
@@ -107,8 +107,8 @@
 									<td align="center"><?= $mkn->status ?></td>
 									<td width="150px" align="center">
 										<a href="<?= base_url('admin/c_admin/detail_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
-										<a href="<?= base_url('admin/c_admin/edit_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-										<a href="<?= base_url('admin/c_admin/delete_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
+										<!-- <a href="<?= base_url('admin/c_admin/edit_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a> -->
+										<!-- <a href="<?= base_url('admin/c_admin/delete_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a> -->
 									</td>
 								</tr>
 							<?php endforeach; ?>
