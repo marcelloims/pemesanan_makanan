@@ -69,6 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 															<input type="radio" name="toping" id="<?= $top->id ?>" value="<?= $top->nama ?>"><?= $top->nama ?><br/>
 														<?php endforeach; ?>
 													<?php endif; ?>
+												</div>
 											</div>
 											<div class="card-footer text-center bg-white">
 												<a href="<?= base_url('pelanggan/c_pelanggan/detail_minuman_panas/' . $mmn->kode_menu) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i>Detail</a>

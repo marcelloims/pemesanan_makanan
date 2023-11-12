@@ -401,27 +401,27 @@ class C_kitchen extends CI_Controller
 		$this->load->view('pelanggan/v_print', $data);
 	}
 
-	public function viewQR()
-	{
-		$this->load->view('admin/v_QRCode');
-	}
+	// public function viewQR()
+	// {
+	// 	$this->load->view('admin/v_QRCode');
+	// }
 
-	public function qrcode($code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan')
-	{
-		// Make QR-Code to format file "png"
-		qrcode::png(
-			$code,
-			$outfile 	= false,
-			$level		= QR_ECLEVEL_H,
-			$size		= 6,
-			$margin 	= 1
-		);
-	}
+	// public function qrcode($code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan')
+	// {
+	// 	// Make QR-Code to format file "png"
+	// 	qrcode::png(
+	// 		$code,
+	// 		$outfile 	= false,
+	// 		$level		= QR_ECLEVEL_H,
+	// 		$size		= 6,
+	// 		$margin 	= 1
+	// 	);
+	// }
 
-	public function printQR()
-	{
-		$this->load->view('kitchen/v_print_QRCode');
-	}
+	// public function printQR()
+	// {
+	// 	$this->load->view('kitchen/v_print_QRCode');
+	// }
 
 	public function data_toping()
 	{

@@ -37,8 +37,8 @@
                         <thead>
                             <tr align="center">
                                 <th scope="col">#</th>
-                                <th scope="col">Tanggal Invoice</th>
                                 <th scope="col">No Invoice</th>
+                                <th scope="col">Tanggal Invoice</th>
                                 <th scope="col">No Meja</th>
                                 <th scope="col">Status Pesanan</th>
                                 <th scope="col">Aksi</th>
@@ -94,7 +94,7 @@
         // console.log(simpanMember);
         if (simpanData) {
             Swal.fire({
-                title: 'Data Pembayaran',
+                title: 'Data Pesanan',
                 text: simpanData,
                 icon: 'success'
             })

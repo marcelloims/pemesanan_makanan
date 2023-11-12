@@ -94,13 +94,9 @@
 			<!-- Main content -->
 		</div>
 
-		<footer class="main-footer">
-			<strong>Copyright &copy; 2014-2019 <a href="http://kitchenlte.io">kitchenLTE.io</a>.</strong>
-			All rights reserved.
-			<div class="float-right d-none d-sm-inline-block">
-				<b>Version</b> 3.0.5
-			</div>
-		</footer>
+		<!-- Control Sidebar -->
+		<?php $this->load->view('_templates_kitchen/footer') ?>
+		<!-- /.control-sidebar -->
 
 		<!-- Control Sidebar -->
 		<?php $this->load->view('_templates_kitchen/control-sidebar') ?>
@@ -135,7 +131,7 @@
 			const hapus = $(this).attr('href')
 			Swal.fire({
 				title: 'Apakah anda yakin?',
-				text: "Data Makanan akan di HAPUS!",
+				text: "Data Toping akan di HAPUS!",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
