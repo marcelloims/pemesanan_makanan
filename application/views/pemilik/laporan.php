@@ -75,7 +75,7 @@
 												<tr align="center">
 													<td><?= $no++ ?></td>
 													<td><?= $item->no_invoice ?></td>
-													<td><?= $item->tanggal_invoice ?></td>
+													<td><?= date('d-M-Y h:i:s', strtotime($item->tanggal_invoice)) ?></td>
 													<td>Rp. <?= number_format($item->total, '0', ',', '.') ?></td>
 													<td><?= $item->status_pesanan ?></td>
 												</tr>
