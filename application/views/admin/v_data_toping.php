@@ -70,7 +70,6 @@
 							<tr align="center">
 								<th scope="col">#</th>
 								<th scope="col">Nama Toping</th>
-								<th scope="col">Aksi</th>
 							</tr>
 						</thead>
 						<tbody id="target">
@@ -81,10 +80,10 @@
 								<tr>
 									<th scope="row"><?= $no++ ?></th>
 									<td align="center"><?= $top->nama ?></td>
-									<td width="150px" align="center">
+									<!-- <td width="150px" align="center">
 										<a href="<?= base_url('admin/c_admin/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 										<a href="<?= base_url('admin/c_admin/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
-									</td>
+									</td> -->
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
@@ -94,14 +93,9 @@
 			<!-- Main content -->
 		</div>
 
-		<footer class="main-footer">
-			<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-			All rights reserved.
-			<div class="float-right d-none d-sm-inline-block">
-				<b>Version</b> 3.0.5
-			</div>
-		</footer>
-
+	<!--Footer -->
+	  	<?php $this->load->view('_templates_admin/footer'); ?>
+	<!-- Footer -->
 		<!-- Control Sidebar -->
 		<?php $this->load->view('_templates_admin/control-sidebar') ?>
 		<!-- /.control-sidebar -->

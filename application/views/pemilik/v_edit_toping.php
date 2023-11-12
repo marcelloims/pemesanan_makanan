@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_kitchen/header'); ?>
+    <?php $this->load->view('_templates_pemilik/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_kitchen/navbar'); ?>
+        <?php $this->load->view('_templates_pemilik/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_kitchen/sidebar'); ?>
+        <?php $this->load->view('_templates_pemilik/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -34,7 +34,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
-                            <form action="<?= base_url('kitchen/c_kitchen/update_toping/') ?>" method="POST" enctype="multipart/form-data">  
+                            <form action="<?= base_url('pemilik/c_pemilik/update_toping/') ?>" method="POST" enctype="multipart/form-data">  
                                 <div class="form-group">
                                     <label for="">Nama Makanan</label>
 									<input type="hidden" name="id"  value="<?= $toping->id ?>">
@@ -53,7 +53,7 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-sm btn-success float-right ml-3 mb-3">Simpan</button>
-                                <?php echo anchor('kitchen/c_kitchen/data_toping/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                                <?php echo anchor('pemilik/c_pemilik/data_toping/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                             </form>
                         </div>
                     </div>
@@ -63,18 +63,18 @@
         </div>
 
 
-        <!-- footer -->
-        <?php $this->load->view('_templates_kitchen/footer') ?>
-        <!--footer -->
+       <!--Footer -->
+	  	<?php $this->load->view('_templates_pemilik/footer'); ?>
+	<!-- Footer -->
 
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_kitchen/control-sidebar') ?>
+        <?php $this->load->view('_templates_pemilik/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_kitchen/js'); ?>
+    <?php $this->load->view('_templates_pemilik/js'); ?>
     <!-- jQuery -->
 </body>
 

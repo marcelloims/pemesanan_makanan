@@ -40,6 +40,8 @@ class C_auth extends CI_Controller
 					case '3':
 						redirect('kitchen/c_kitchen/dashboard');
 						break;
+					case '4':
+						redirect('pemilik/c_pemilik/dashboard');
                     default:
                         break;
                 }

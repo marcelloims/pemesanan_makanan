@@ -2,18 +2,18 @@
 <html>
 
 <head>
-	<?php $this->load->view('_templates_kitchen/header'); ?>
+	<?php $this->load->view('_templates_pemilik/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
 		<!-- Navbar -->
-		<?php $this->load->view('_templates_kitchen/navbar'); ?>
+		<?php $this->load->view('_templates_pemilik/navbar'); ?>
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<?php $this->load->view('_templates_kitchen/sidebar'); ?>
+		<?php $this->load->view('_templates_pemilik/sidebar'); ?>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -49,7 +49,7 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form action="<?= base_url() ?>kitchen/c_kitchen/tambah_toping" id="form" method="POST" enctype="multipart/form-data">
+								<form action="<?= base_url() ?>pemilik/c_pemilik/tambah_toping" id="form" method="POST" enctype="multipart/form-data">
 									<div class="modal-body">
 										<div class="form-group">
 											<label for="">Nama Toping</label>
@@ -82,8 +82,8 @@
 									<th scope="row"><?= $no++ ?></th>
 									<td align="center"><?= $top->nama ?></td>
 									<td width="150px" align="center">
-										<a href="<?= base_url('kitchen/c_kitchen/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-										<a href="<?= base_url('kitchen/c_kitchen/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
+										<a href="<?= base_url('pemilik/c_pemilik/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+										<a href="<?= base_url('pemilik/c_pemilik/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -94,18 +94,18 @@
 			<!-- Main content -->
 		</div>
 
-		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_kitchen/footer') ?>
-		<!-- /.control-sidebar -->
+		<!--Footer -->
+		<?php $this->load->view('_templates_pemilik/footer'); ?>
+	<!-- Footer -->
 
 		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_kitchen/control-sidebar') ?>
+		<?php $this->load->view('_templates_pemilik/control-sidebar') ?>
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
 
 	<!-- jQuery -->
-	<?php $this->load->view('_templates_kitchen/js'); ?>
+	<?php $this->load->view('_templates_pemilik/js'); ?>
 	<script>
 		$(function() {
 			$("#example1").DataTable({
@@ -136,7 +136,7 @@
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya, Hapus Data Makanan!',
+				confirmButtonText: 'Ya, Hapus Data Toping!',
 				cancelButtonText: 'Tidak, batalkan'
 			}).then((result) => {
 				if (result.isConfirmed) {

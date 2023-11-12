@@ -2,18 +2,18 @@
 <html>
 
 <head>
-	<?php $this->load->view('_templates_kitchen/header'); ?>
+	<?php $this->load->view('_templates_pemilik/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
 		<!-- Navbar -->
-		<?php $this->load->view('_templates_kitchen/navbar'); ?>
+		<?php $this->load->view('_templates_pemilik/navbar'); ?>
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<?php $this->load->view('_templates_kitchen/sidebar'); ?>
+		<?php $this->load->view('_templates_pemilik/sidebar'); ?>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -22,7 +22,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Data Toping</h1>
+							<h1 class="m-0 text-dark">Data Makanan</h1>
 						</div>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 				<div class="container">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-						<i class="fas fa-plus"> Data Toping</i>
+						<i class="fas fa-plus"> Data Makanan</i>
 					</button>
 					<p class="login-box-msg"><?= $this->session->flashdata('pesan1') ?></p>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"></div>
@@ -44,17 +44,33 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Toping</h5>
+									<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Makanan</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form action="<?= base_url() ?>kitchen/c_kitchen/tambah_toping" id="form" method="POST" enctype="multipart/form-data">
+								<form action="<?= base_url() ?>pemilik/c_pemilik/tambah_makanan" id="form" method="POST" enctype="multipart/form-data">
 									<div class="modal-body">
+										<input type="hidden" name="kode_menu" value="MKN-<?php echo date('dmy') ?>-<?= $jumlah_makanan + 1 ?>">
 										<div class="form-group">
-											<label for="">Nama Toping</label>
-											<input type="text" class="form-control" name="nama" value="" placeholder="Nama Toping">
-											<span class="text-danger"><?= $this->session->flashdata('nama') ?></span>
+											<label for="">Nama Makanan</label>
+											<input type="text" class="form-control" name="nama_menu" value="<?php echo set_value('nama_menu'); ?>" placeholder="Nama Makanan">
+											<span class="text-danger"><?= $this->session->flashdata('nama_menu') ?></span>
+										</div>
+										<div class="form-group">
+											<label for="">Harga</label>
+											<input type="text" class="form-control" name="harga" value="<?php echo set_value('harga'); ?>" placeholder="Harga">
+											<span class="text-danger"><?= $this->session->flashdata('harga') ?></span>
+										</div>
+										<div class="form-group">
+											<label for="">Deskripsi</label>
+											<input type="text" class="form-control" name="deskripsi" value="<?php echo set_value('deskripsi'); ?>" placeholder="Deskripsi">
+											<span class="text-danger"><?= $this->session->flashdata('deskripsi') ?></span>
+										</div>
+										<div class="form-group">
+											<label for="">Foto</label>
+											<input type="file" class="file-control" name="foto" value="<?php echo set_value('foto'); ?>" placeholder="Foto">
+											<span class="text-danger"><?= $this->session->flashdata('foto') ?></span>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -69,21 +85,30 @@
 						<thead>
 							<tr align="center">
 								<th scope="col">#</th>
-								<th scope="col">Nama Toping</th>
+								<th scope="col">Kode Makanan</th>
+								<th scope="col">Nama Makanan</th>
+								<th scope="col">Harga</th>
+								<th scope="col">Promo</th>
+								<th scope="col">Status</th>
 								<th scope="col">Aksi</th>
 							</tr>
 						</thead>
 						<tbody id="target">
 							<?php
 							$no = 1;
-							foreach ($toping as $top) :
+							foreach ($makanan as $mkn) :
 							?>
 								<tr>
 									<th scope="row"><?= $no++ ?></th>
-									<td align="center"><?= $top->nama ?></td>
+									<td align="center"><?= $mkn->kode_menu ?></td>
+									<td align="center"><?= $mkn->nama_menu ?></td>
+									<td align="center">Rp. <?= number_format($mkn->harga, 0, ',', '.') ?></td>
+									<td align="center">Rp. <?= number_format($mkn->promo, 0, ',', '.') ?></td>
+									<td align="center"><?= $mkn->status ?></td>
 									<td width="150px" align="center">
-										<a href="<?= base_url('kitchen/c_kitchen/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-										<a href="<?= base_url('kitchen/c_kitchen/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
+										<a href="<?= base_url('pemilik/c_pemilik/detail_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
+										<a href="<?= base_url('pemilik/c_pemilik/edit_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+										<a href="<?= base_url('pemilik/c_pemilik/delete_makanan/' . $mkn->kode_menu) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -95,17 +120,17 @@
 		</div>
 
 		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_kitchen/footer') ?>
-		<!-- /.control-sidebar -->
-
-		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_kitchen/control-sidebar') ?>
+		<?php $this->load->view('_templates_pemilik/control-sidebar') ?>
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
+	
+		<!--Footer start -->
+		<?php $this->load->view('_templates_pemilik/footer'); ?>
+		<!--Footer end -->
 
 	<!-- jQuery -->
-	<?php $this->load->view('_templates_kitchen/js'); ?>
+	<?php $this->load->view('_templates_pemilik/js'); ?>
 	<script>
 		$(function() {
 			$("#example1").DataTable({
@@ -119,7 +144,7 @@
 		// console.log(simpanMember);
 		if (simpanData) {
 			Swal.fire({
-				title: 'Data Toping',
+				title: 'Data Makanan',
 				text: simpanData,
 				icon: 'success'
 			})
@@ -131,7 +156,7 @@
 			const hapus = $(this).attr('href')
 			Swal.fire({
 				title: 'Apakah anda yakin?',
-				text: "Data Toping akan di HAPUS!",
+				text: "Data Makanan akan di HAPUS!",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',

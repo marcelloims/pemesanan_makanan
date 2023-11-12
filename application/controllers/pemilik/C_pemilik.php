@@ -1,12 +1,12 @@
 <?php
 
-class C_kitchen extends CI_Controller
+class C_pemilik extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('role_id') != '3') {
+		if ($this->session->userdata('role_id') != '4') {
 			$this->session->set_flashdata('pesan', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Anda Belum</strong> Login.
@@ -58,7 +58,7 @@ class C_kitchen extends CI_Controller
 		$data['penjualan_mmn']   = $gets_minum;
 
 
-		$this->load->view('kitchen/v_dashboard', $data);
+		$this->load->view('pemilik/v_dashboard', $data);
 	}
 
 
@@ -69,7 +69,7 @@ class C_kitchen extends CI_Controller
 	{
 		$data['makanan'] = $this->Model_admin->data_makanan()->result();
 		$data['jumlah_makanan'] = $this->Model_admin->jumlah_makanan();
-		$this->load->view('kitchen/v_data_makanan', $data);
+		$this->load->view('pemilik/v_data_makanan', $data);
 	}
 
 	public function ambil_data()
@@ -117,7 +117,7 @@ class C_kitchen extends CI_Controller
 			$this->session->set_flashdata('harga', form_error('harga'));
 			$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
 			$this->session->set_flashdata('foto', form_error('foto'));
-			redirect('admin/c_kitchen/data_makanan');
+			redirect('pemilik/c_pemilik/data_makanan');
 		}
 
 		$data = [
@@ -132,14 +132,14 @@ class C_kitchen extends CI_Controller
 
 		$this->Model_admin->tambah_makanan($data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('kitchen/c_kitchen/data_makanan');
+		redirect('pemilik/c_pemilik/data_makanan');
 	}
 
 	public function detail_makanan($id)
 	{
 		$data['makanan'] = $this->Model_admin->detail_makanan($id);
 
-		$this->load->view('kitchen/v_detail_makanan', $data);
+		$this->load->view('pemilik/v_detail_makanan', $data);
 	}
 
 	public function edit_makanan($id)
@@ -148,7 +148,8 @@ class C_kitchen extends CI_Controller
 		$data['makanan'] = $this->Model_admin->edit_makanan($where, 'tb_menus');
 
 		$data['status'] = ['Ready', 'Kosong'];
-		$this->load->view('kitchen/v_edit_makanan', $data);
+		// $this->session->set_flashdata('pesan', 'Berhasil diupdate');
+		$this->load->view('pemilik/v_edit_makanan', $data);
 	}
 
 	public function update_makanan()
@@ -187,7 +188,7 @@ class C_kitchen extends CI_Controller
 		$where = ['kode_menu' => $kode_menu];
 		$this->Model_admin->update_makanan($where, $data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('kitchen/c_kitchen/data_makanan');
+		redirect('pemilik/c_pemilik/data_makanan');
 	}
 
 	public function delete_makanan($id)
@@ -195,7 +196,7 @@ class C_kitchen extends CI_Controller
 		$where = ['kode_menu' => $id];
 		$this->Model_admin->delete_makanan($where, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
-		redirect('kitchen/c_kitchen/data_makanan');
+		redirect('pemilik/c_pemilik/data_makanan');
 	}
 
 
@@ -206,7 +207,7 @@ class C_kitchen extends CI_Controller
 	{
 		$data['minuman'] = $this->Model_admin->data_minuman()->result();
 		$data['jumlah_minuman'] = $this->Model_admin->jumlah_minuman();
-		$this->load->view('kitchen/v_data_minuman', $data);
+		$this->load->view('pemilik/v_data_minuman', $data);
 	}
 
 	public function tambah_minuman()
@@ -251,7 +252,7 @@ class C_kitchen extends CI_Controller
 			$this->session->set_flashdata('harga', form_error('harga'));
 			$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
 			$this->session->set_flashdata('foto', form_error('foto'));
-			redirect('kitchen/c_kitchen/data_minuman');
+			redirect('pemilik/c_pemilik/data_minuman');
 		}
 
 		$data = [
@@ -267,14 +268,14 @@ class C_kitchen extends CI_Controller
 
 		$this->Model_admin->tambah_minuman($data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('kitchen/c_kitchen/data_minuman');
+		redirect('pemilik/c_pemilik/data_minuman');
 	}
 
 	public function detail_minuman($id)
 	{
 		$data['minuman'] = $this->Model_admin->detail_minuman($id);
 
-		$this->load->view('kitchen/v_detail_minuman', $data);
+		$this->load->view('pemilik/v_detail_minuman', $data);
 	}
 
 	public function edit_minuman($id)
@@ -284,7 +285,7 @@ class C_kitchen extends CI_Controller
 		$data['status'] 	= ['Ready', 'Kosong'];
 		$data['kategori']	= ['Ice', 'Hot'];
 		$data['toping']		= ["Tidak", "Ya"];
-		$this->load->view('kitchen/v_edit_minuman', $data);
+		$this->load->view('pemilik/v_edit_minuman', $data);
 	}
 
 	public function update_minuman()
@@ -326,7 +327,7 @@ class C_kitchen extends CI_Controller
 		$where = ['kode_menu' => $kode_menu];
 		$this->Model_admin->update_minuman($where, $data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('kitchen/c_kitchen/data_minuman');
+		redirect('pemilik/c_pemilik/data_minuman');
 	}
 
 	public function delete_minuman($id)
@@ -334,12 +335,12 @@ class C_kitchen extends CI_Controller
 		$where = ['kode_menu' => $id];
 		$this->Model_admin->delete_minuman($where, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
-		redirect('kitchen/c_kitchen/data_minuman');
+		redirect('pemilik/c_pemilik/data_minuman');
 	}
 
 	public function data_pesanan()
 	{
-		$this->load->view('kitchen/v_data_pesanan');
+		$this->load->view('pemilik/v_data_pesanan');
 	}
 
 	public function get_pesanan()
@@ -352,17 +353,17 @@ class C_kitchen extends CI_Controller
 		$no     	= $this->input->post('start'); //$_POST['start'];
 
 		foreach ($list as $item) {
-			$btn_collor	= $item->status_pembuatan == "Keluar" ? 'btn-success' : 'btn-info';
+			$btn_collor	= $item->status_pesanan == "Lunas" ? 'btn-success' : 'btn-info';
 			$no++;
 			$row = array();
 			$row[] = $no;
 			$row[] = 'Jaju Coffee-' . $item->no_invoice;
 			$row[] = date('d-M-Y h:i:s', strtotime($item->tanggal_invoice));
 			$row[] = $item->meja;
-			$row[] = '<span class="btn btn-sm ' . $btn_collor . '">' . $item->status_pembuatan . '</span>';
+			$row[] = '<span class="btn btn-sm ' . $btn_collor . '">' . $item->status_pesanan . '</span>';
 			$row[] = '
-            <a href="' . base_url('kitchen/c_kitchen/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-info-circle"></i></a>
-            <a href="' . base_url('kitchen/c_kitchen/update_pembuatan/' . $item->no_invoice) . '" class="btn btn-sm btn-success"><i class="fas fa-check"></i></a>
+            <a href="' . base_url('pemilik/c_pemilik/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>
+            <a href="' . base_url('pemilik/c_pemilik/print/' . $item->no_invoice) . '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
             ';
 			$data[] = $row;
 		}
@@ -381,7 +382,7 @@ class C_kitchen extends CI_Controller
 	{
 		$data['detail']  = $this->Model_admin->detail_pesanan($id);
 		$data['pesanan'] = $this->Model_admin->pesanan($id)->result();
-		$this->load->view('kitchen/v_detail_pesanan', $data);
+		$this->load->view('pemilik/v_detail_pesanan', $data);
 	}
 
 	public function submit_payment($id)
@@ -391,7 +392,7 @@ class C_kitchen extends CI_Controller
 
 		$this->Model_admin->submit_payment($where, $data, 'tb_orders');
 		$this->session->set_flashdata('pesan', 'Pembayaran telah dilakukan');
-		redirect('kitchen/c_kitchen/data_pesanan');
+		redirect('pemilik/c_pemilik/data_pesanan');
 	}
 
 	public function print($id)
@@ -401,32 +402,32 @@ class C_kitchen extends CI_Controller
 		$this->load->view('pelanggan/v_print', $data);
 	}
 
-	// public function viewQR()
-	// {
-	// 	$this->load->view('admin/v_QRCode');
-	// }
+	public function viewQR()
+	{
+		$this->load->view('pemilik/v_QRCode');
+	}
 
-	// public function qrcode($code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan')
-	// {
-	// 	// Make QR-Code to format file "png"
-	// 	qrcode::png(
-	// 		$code,
-	// 		$outfile 	= false,
-	// 		$level		= QR_ECLEVEL_H,
-	// 		$size		= 6,
-	// 		$margin 	= 1
-	// 	);
-	// }
+	public function qrcode($code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan')
+	{
+		// Make QR-Code to format file "png"
+		qrcode::png(
+			$code,
+			$outfile 	= false,
+			$level		= QR_ECLEVEL_H,
+			$size		= 6,
+			$margin 	= 1
+		);
+	}
 
-	// public function printQR()
-	// {
-	// 	$this->load->view('kitchen/v_print_QRCode');
-	// }
+	public function printQR()
+	{
+		$this->load->view('pemilik/v_print_QRCode');
+	}
 
 	public function data_toping()
 	{
 		$data['toping'] = $this->Model_admin->data_toping()->result();
-		$this->load->view('kitchen/v_data_toping', $data);
+		$this->load->view('pemilik/v_data_toping', $data);
 	}
 
 	public function tambah_toping()
@@ -437,7 +438,7 @@ class C_kitchen extends CI_Controller
 		];
 		$this->Model_admin->tambah_toping($data, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
-		redirect('kitchen/c_kitchen/data_toping');
+		redirect('pemilik/c_pemilik/data_toping');
 	}
 
 	public function edit_toping($id)
@@ -445,8 +446,8 @@ class C_kitchen extends CI_Controller
 		$where = ['id' => $id];
 		$data['status'] 	= ['Ready', 'Kosong'];
 		$data['toping'] = $this->Model_admin->edit_toping($where, 'tb_toping');
-		
-		$this->load->view('kitchen/v_edit_toping',$data);
+
+		$this->load->view('pemilik/v_edit_toping', $data);
 	}
 
 	public function update_toping()
@@ -458,7 +459,7 @@ class C_kitchen extends CI_Controller
 		];
 		$this->Model_admin->update_toping($where, $data, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('kitchen/c_kitchen/data_toping');
+		redirect('pemilik/c_pemilik/data_toping');
 	}
 
 	public function delete_toping($id)
@@ -466,15 +467,26 @@ class C_kitchen extends CI_Controller
 		$where = ['id' => $id];
 		$this->Model_admin->delete_makanan($where, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
-		redirect('kitchen/c_kitchen/data_toping');
+		redirect('pemilik/c_pemilik/data_toping');
 	}
 
-	public function update_pembuatan($id)
+	public function laporan()
 	{
-		$where	= ["no_invoice" => $id];
-		$data	= ["status_pembuatan" => "Keluar"];
-		$this->Model_admin->update_pembuatan($where, 'tb_orders', $data);
-		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
-		redirect('kitchen/c_kitchen/data_pesanan');
+		$tanggal_awal 	= $this->input->get('tanggal_awal');
+		$tanggal_akhir 	= $this->input->get('tanggal_akhir');
+		$data['data'] = [];
+		$data['date']	= [$tanggal_awal, $tanggal_akhir];
+
+		$this->load->view('pemilik/laporan', $data);
+	}
+
+	public function hasil_laporan()
+	{
+		$tanggal_awal 	= $this->input->get('tanggal_awal');
+		$tanggal_akhir 	= $this->input->get('tanggal_akhir');
+
+		$data['data'] 	= $this->Model_admin->laporan($tanggal_awal, $tanggal_akhir)->result();
+		$data['date']	= [$tanggal_awal, $tanggal_akhir];
+		$this->load->view('pemilik/laporan', $data);
 	}
 }

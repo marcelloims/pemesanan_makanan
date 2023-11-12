@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_kitchen/header'); ?>
+    <?php $this->load->view('_templates_pemilik/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_kitchen/navbar'); ?>
+        <?php $this->load->view('_templates_pemilik/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_kitchen/sidebar'); ?>
+        <?php $this->load->view('_templates_pemilik/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -53,24 +53,24 @@
         </div>
 		
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_kitchen/control-sidebar') ?>
+        <?php $this->load->view('_templates_pemilik/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
 
 	<!--Footer start -->
-	<?php $this->load->view('_templates_kitchen/footer'); ?>
+	<?php $this->load->view('_templates_pemilik/footer'); ?>
 	<!--Footer end -->
 
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_kitchen/js'); ?>
+    <?php $this->load->view('_templates_pemilik/js'); ?>
     <script>
         var table = $('#example1').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '<?= base_url("kitchen/c_kitchen/get_pesanan") ?>',
+                url: '<?= base_url("pemilik/c_pemilik/get_pesanan") ?>',
                 type: 'POST'
             },
             "columnDefs": [{
@@ -94,7 +94,7 @@
         // console.log(simpanMember);
         if (simpanData) {
             Swal.fire({
-                title: 'Data Pesanan',
+                title: 'Data Pembayaran',
                 text: simpanData,
                 icon: 'success'
             })
