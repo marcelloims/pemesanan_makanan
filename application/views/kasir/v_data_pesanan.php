@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_kasir/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
+        <?php $this->load->view('_templates_kasir/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -53,24 +53,24 @@
         </div>
 		
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
+        <?php $this->load->view('_templates_kasir/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
 
 	<!--Footer start -->
-	<?php $this->load->view('_templates_admin/footer'); ?>
+	<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!--Footer end -->
 
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
+    <?php $this->load->view('_templates_kasir/js'); ?>
     <script>
         var table = $('#example1').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '<?= base_url("admin/c_admin/get_pesanan") ?>',
+                url: '<?= base_url("kasir/c_kasir/get_pesanan") ?>',
                 type: 'POST'
             },
             "columnDefs": [{

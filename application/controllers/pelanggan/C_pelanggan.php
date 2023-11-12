@@ -27,7 +27,7 @@ class C_pelanggan extends CI_Controller
 
 	public function detail_makanan($id)
 	{
-		$data['makanan'] = $this->Model_admin->detail_makanan($id);
+		$data['makanan'] = $this->Model_kasir->detail_makanan($id);
 		$this->load->view('pelanggan/v_detail_makanan', $data);
 	}
 
@@ -47,13 +47,13 @@ class C_pelanggan extends CI_Controller
 
 	public function detail_minuman($id)
 	{
-		$data['minuman'] = $this->Model_admin->detail_minuman($id);
+		$data['minuman'] = $this->Model_kasir->detail_minuman($id);
 		$this->load->view('pelanggan/v_detail_minuman', $data);
 	}
 
 	public function detail_minuman_panas($id)
 	{
-		$data['minuman'] = $this->Model_admin->detail_minuman($id);
+		$data['minuman'] = $this->Model_kasir->detail_minuman($id);
 		$this->load->view('pelanggan/v_detail_minuman_panas', $data);
 	}
 

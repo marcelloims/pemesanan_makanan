@@ -43,7 +43,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Makanan</h5>
+									<h5 class="modal-title" id="exampleModalLabel">Form Tambah Data Minuman</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
@@ -93,8 +93,8 @@
 						<thead>
 							<tr align="center">
 								<th scope="col">#</th>
-								<th scope="col">Kode Makanan</th>
-								<th scope="col">Nama Makanan</th>
+								<th scope="col">Kode Minuman</th>
+								<th scope="col">Nama Minuman</th>
 								<th scope="col">Harga</th>
 								<th scope="col">Promo</th>
 								<th scope="col">Status</th>

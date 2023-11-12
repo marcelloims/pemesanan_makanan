@@ -32,7 +32,7 @@ class C_auth extends CI_Controller
 
                 switch ($auth->role_id) {
                     case '1':
-                        redirect('admin/c_admin/dashboard');
+                        redirect('kasir/c_kasir/dashboard');
                         break;
                     case '2':
                         redirect('pelanggan/c_pelanggan/data_makanan');

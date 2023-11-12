@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_kasir/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
+        <?php $this->load->view('_templates_kasir/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -37,7 +37,7 @@
                             <img src="<?php echo base_url() . '/uploads/' . $makanan->foto ?>" class="card-img-top">
                         </div>
                         <div class="col-md-7">
-                            <form action="<?= base_url() ?>admin/c_admin/update_makanan" method="POST" enctype="multipart/form-data">
+                            <form action="<?= base_url() ?>kasir/c_kasir/update_makanan" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="">Kode Makanan</label>
                                     <input type="text" class="form-control" name="kode_menu" value="<?= $makanan->kode_menu ?>" readonly>
@@ -75,7 +75,7 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-sm btn-success float-right ml-3 mb-3">Simpan</button>
-                                <?php echo anchor('admin/c_admin/data_makanan', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                                <?php echo anchor('kasir/c_kasir/data_makanan', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                             </form>
                         </div>
                     </div>
@@ -85,17 +85,17 @@
         </div>
 
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
+        <?php $this->load->view('_templates_kasir/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
 	<!--Footer start -->
-	<?php $this->load->view('_templates_admin/footer'); ?>
+	<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!--Footer end -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
+    <?php $this->load->view('_templates_kasir/js'); ?>
     <!-- jQuery -->
 </body>
 

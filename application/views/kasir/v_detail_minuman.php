@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_kasir/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
+        <?php $this->load->view('_templates_kasir/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -56,7 +56,7 @@
                                 </tr>
                             </table>
 
-                            <?php echo anchor('admin/c_admin/data_minuman/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                            <?php echo anchor('kasir/c_kasir/data_minuman/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                         </div>
                     </div>
                 </div>
@@ -65,18 +65,18 @@
         </div>
 
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
+        <?php $this->load->view('_templates_kasir/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
 	<!--Footer start -->
-		<?php $this->load->view('_templates_admin/footer'); ?>
+		<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!--Footer end -->
 
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
+    <?php $this->load->view('_templates_kasir/js'); ?>
     <!-- jQuery -->
 </body>
 

@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_kasir/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
+        <?php $this->load->view('_templates_kasir/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -34,7 +34,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
-                            <form action="<?= base_url('admin/c_admin/update_toping/') ?>" method="POST" enctype="multipart/form-data">  
+                            <form action="<?= base_url('kasir/c_kasir/update_toping/') ?>" method="POST" enctype="multipart/form-data">  
                                 <div class="form-group">
                                     <label for="">Nama Makanan</label>
 									<input type="hidden" name="id"  value="<?= $toping->id ?>">
@@ -53,7 +53,7 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-sm btn-success float-right ml-3 mb-3">Simpan</button>
-                                <?php echo anchor('admin/c_admin/data_toping/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
+                                <?php echo anchor('kasir/c_kasir/data_toping/', '<div class="btn btn-sm btn-danger float-right">Kembali</div>') ?>
                             </form>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
 
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2014-2019 <a href="http://kasirlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.0.5
@@ -72,13 +72,13 @@
         </footer>
 
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
+        <?php $this->load->view('_templates_kasir/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
+    <?php $this->load->view('_templates_kasir/js'); ?>
     <!-- jQuery -->
 </body>
 

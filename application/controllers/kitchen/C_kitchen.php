@@ -22,12 +22,12 @@ class C_kitchen extends CI_Controller
 
 	public function dashboard()
 	{
-		$data['total_makanan']  = $this->Model_admin->total_makanan()->num_rows();
-		$data['total_minuman']  = $this->Model_admin->total_minuman()->num_rows();
-		$data['total_karyawan'] = $this->Model_admin->total_karyawan()->num_rows();
-		$data['total_pesanan']  = $this->Model_admin->total_pesanan()->num_rows();
+		$data['total_makanan']  = $this->Model_kasir->total_makanan()->num_rows();
+		$data['total_minuman']  = $this->Model_kasir->total_minuman()->num_rows();
+		$data['total_karyawan'] = $this->Model_kasir->total_karyawan()->num_rows();
+		$data['total_pesanan']  = $this->Model_kasir->total_pesanan()->num_rows();
 
-		$data_makanan           = $this->Model_admin->data_makanan()->result();
+		$data_makanan           = $this->Model_kasir->data_makanan()->result();
 		$nama_makanan           = [];
 		$kode_makanan           = [];
 		foreach ($data_makanan as $data_mkn) {
@@ -37,13 +37,13 @@ class C_kitchen extends CI_Controller
 
 		for ($i = 0; $i < count($kode_makanan); $i++) {
 			$where = ['kode' => $kode_makanan[$i]];
-			$gets_makan[] = $this->Model_admin->total_penjualan_makanan($where, 'tb_detail_orders')->result();
+			$gets_makan[] = $this->Model_kasir->total_penjualan_makanan($where, 'tb_detail_orders')->result();
 		}
 		$data['penjualan_mkn'] = $gets_makan;
 
 
 
-		$data_minuman           = $this->Model_admin->data_minuman()->result();
+		$data_minuman           = $this->Model_kasir->data_minuman()->result();
 		$nama_minuman           = [];
 		$kode_minuman           = [];
 		foreach ($data_minuman as $data_mkn) {
@@ -53,7 +53,7 @@ class C_kitchen extends CI_Controller
 
 		for ($i = 0; $i < count($kode_minuman); $i++) {
 			$where = ['kode' => $kode_minuman[$i]];
-			$gets_minum[]   = $this->Model_admin->total_penjualan_minuman($where, 'tb_detail_orders')->result();
+			$gets_minum[]   = $this->Model_kasir->total_penjualan_minuman($where, 'tb_detail_orders')->result();
 		}
 		$data['penjualan_mmn']   = $gets_minum;
 
@@ -67,14 +67,14 @@ class C_kitchen extends CI_Controller
 
 	public function data_makanan()
 	{
-		$data['makanan'] = $this->Model_admin->data_makanan()->result();
-		$data['jumlah_makanan'] = $this->Model_admin->jumlah_makanan();
+		$data['makanan'] = $this->Model_kasir->data_makanan()->result();
+		$data['jumlah_makanan'] = $this->Model_kasir->jumlah_makanan();
 		$this->load->view('kitchen/v_data_makanan', $data);
 	}
 
 	public function ambil_data()
 	{
-		$dataMenu = $this->Model_admin->ambil_data('tb_menus')->result();
+		$dataMenu = $this->Model_kasir->ambil_data('tb_menus')->result();
 		echo json_encode($dataMenu);
 	}
 
@@ -117,7 +117,7 @@ class C_kitchen extends CI_Controller
 			$this->session->set_flashdata('harga', form_error('harga'));
 			$this->session->set_flashdata('deskripsi', form_error('deskripsi'));
 			$this->session->set_flashdata('foto', form_error('foto'));
-			redirect('admin/c_kitchen/data_makanan');
+			redirect('kitchen/c_kitchen/data_makanan');
 		}
 
 		$data = [
@@ -130,14 +130,14 @@ class C_kitchen extends CI_Controller
 			'status'            => "Ready"
 		];
 
-		$this->Model_admin->tambah_makanan($data, 'tb_menus');
+		$this->Model_kasir->tambah_makanan($data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
 		redirect('kitchen/c_kitchen/data_makanan');
 	}
 
 	public function detail_makanan($id)
 	{
-		$data['makanan'] = $this->Model_admin->detail_makanan($id);
+		$data['makanan'] = $this->Model_kasir->detail_makanan($id);
 
 		$this->load->view('kitchen/v_detail_makanan', $data);
 	}
@@ -145,7 +145,7 @@ class C_kitchen extends CI_Controller
 	public function edit_makanan($id)
 	{
 		$where = ['kode_menu' => $id];
-		$data['makanan'] = $this->Model_admin->edit_makanan($where, 'tb_menus');
+		$data['makanan'] = $this->Model_kasir->edit_makanan($where, 'tb_menus');
 
 		$data['status'] = ['Ready', 'Kosong'];
 		$this->load->view('kitchen/v_edit_makanan', $data);
@@ -185,7 +185,7 @@ class C_kitchen extends CI_Controller
 		];
 
 		$where = ['kode_menu' => $kode_menu];
-		$this->Model_admin->update_makanan($where, $data, 'tb_menus');
+		$this->Model_kasir->update_makanan($where, $data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
 		redirect('kitchen/c_kitchen/data_makanan');
 	}
@@ -193,7 +193,7 @@ class C_kitchen extends CI_Controller
 	public function delete_makanan($id)
 	{
 		$where = ['kode_menu' => $id];
-		$this->Model_admin->delete_makanan($where, 'tb_menus');
+		$this->Model_kasir->delete_makanan($where, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
 		redirect('kitchen/c_kitchen/data_makanan');
 	}
@@ -204,8 +204,8 @@ class C_kitchen extends CI_Controller
 
 	public function data_minuman()
 	{
-		$data['minuman'] = $this->Model_admin->data_minuman()->result();
-		$data['jumlah_minuman'] = $this->Model_admin->jumlah_minuman();
+		$data['minuman'] = $this->Model_kasir->data_minuman()->result();
+		$data['jumlah_minuman'] = $this->Model_kasir->jumlah_minuman();
 		$this->load->view('kitchen/v_data_minuman', $data);
 	}
 
@@ -265,14 +265,14 @@ class C_kitchen extends CI_Controller
 			'status'            => "Ready"
 		];
 
-		$this->Model_admin->tambah_minuman($data, 'tb_menus');
+		$this->Model_kasir->tambah_minuman($data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
 		redirect('kitchen/c_kitchen/data_minuman');
 	}
 
 	public function detail_minuman($id)
 	{
-		$data['minuman'] = $this->Model_admin->detail_minuman($id);
+		$data['minuman'] = $this->Model_kasir->detail_minuman($id);
 
 		$this->load->view('kitchen/v_detail_minuman', $data);
 	}
@@ -280,7 +280,7 @@ class C_kitchen extends CI_Controller
 	public function edit_minuman($id)
 	{
 		$where = ['kode_menu' => $id];
-		$data['minuman']	= $this->Model_admin->edit_minuman($where, 'tb_menus');
+		$data['minuman']	= $this->Model_kasir->edit_minuman($where, 'tb_menus');
 		$data['status'] 	= ['Ready', 'Kosong'];
 		$data['kategori']	= ['Ice', 'Hot'];
 		$data['toping']		= ["Tidak", "Ya"];
@@ -324,7 +324,7 @@ class C_kitchen extends CI_Controller
 		];
 
 		$where = ['kode_menu' => $kode_menu];
-		$this->Model_admin->update_minuman($where, $data, 'tb_menus');
+		$this->Model_kasir->update_minuman($where, $data, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
 		redirect('kitchen/c_kitchen/data_minuman');
 	}
@@ -332,7 +332,7 @@ class C_kitchen extends CI_Controller
 	public function delete_minuman($id)
 	{
 		$where = ['kode_menu' => $id];
-		$this->Model_admin->delete_minuman($where, 'tb_menus');
+		$this->Model_kasir->delete_minuman($where, 'tb_menus');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
 		redirect('kitchen/c_kitchen/data_minuman');
 	}
@@ -344,10 +344,10 @@ class C_kitchen extends CI_Controller
 
 	public function get_pesanan()
 	{
-		// $data 	= $this->Model_admin->data_pesanan()->result();
+		// $data 	= $this->Model_kasir->data_pesanan()->result();
 		// echo json_encode($data);
 
-		$list   	= $this->Model_admin->data_pesanan()->result();
+		$list   	= $this->Model_kasir->data_pesanan()->result();
 		$data   	= [];
 		$no     	= $this->input->post('start'); //$_POST['start'];
 
@@ -369,8 +369,8 @@ class C_kitchen extends CI_Controller
 
 		$output = array(
 			"draw"              => $this->input->post('draw'), //$_POST['draw'],
-			"recordsTotal"      => $this->Model_admin->count_all_data(),
-			"recordsFiltered"   => $this->Model_admin->count_filtered_data(),
+			"recordsTotal"      => $this->Model_kasir->count_all_data(),
+			"recordsFiltered"   => $this->Model_kasir->count_filtered_data(),
 			"data"              => $data,
 		);
 
@@ -379,8 +379,8 @@ class C_kitchen extends CI_Controller
 
 	public function detail_pesanan($id)
 	{
-		$data['detail']  = $this->Model_admin->detail_pesanan($id);
-		$data['pesanan'] = $this->Model_admin->pesanan($id)->result();
+		$data['detail']  = $this->Model_kasir->detail_pesanan($id);
+		$data['pesanan'] = $this->Model_kasir->pesanan($id)->result();
 		$this->load->view('kitchen/v_detail_pesanan', $data);
 	}
 
@@ -389,7 +389,7 @@ class C_kitchen extends CI_Controller
 		$data = ['status_pesanan' => "Lunas"];
 		$where = ['no_invoice' => $id];
 
-		$this->Model_admin->submit_payment($where, $data, 'tb_orders');
+		$this->Model_kasir->submit_payment($where, $data, 'tb_orders');
 		$this->session->set_flashdata('pesan', 'Pembayaran telah dilakukan');
 		redirect('kitchen/c_kitchen/data_pesanan');
 	}
@@ -403,7 +403,7 @@ class C_kitchen extends CI_Controller
 
 	// public function viewQR()
 	// {
-	// 	$this->load->view('admin/v_QRCode');
+	// 	$this->load->view('kasir/v_QRCode');
 	// }
 
 	// public function qrcode($code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan')
@@ -425,7 +425,7 @@ class C_kitchen extends CI_Controller
 
 	public function data_toping()
 	{
-		$data['toping'] = $this->Model_admin->data_toping()->result();
+		$data['toping'] = $this->Model_kasir->data_toping()->result();
 		$this->load->view('kitchen/v_data_toping', $data);
 	}
 
@@ -435,7 +435,7 @@ class C_kitchen extends CI_Controller
 			'nama' => $this->input->post('nama'),
 			"status" => "Ready"
 		];
-		$this->Model_admin->tambah_toping($data, 'tb_toping');
+		$this->Model_kasir->tambah_toping($data, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil disimpan');
 		redirect('kitchen/c_kitchen/data_toping');
 	}
@@ -444,7 +444,7 @@ class C_kitchen extends CI_Controller
 	{
 		$where = ['id' => $id];
 		$data['status'] 	= ['Ready', 'Kosong'];
-		$data['toping'] = $this->Model_admin->edit_toping($where, 'tb_toping');
+		$data['toping'] = $this->Model_kasir->edit_toping($where, 'tb_toping');
 		
 		$this->load->view('kitchen/v_edit_toping',$data);
 	}
@@ -456,7 +456,7 @@ class C_kitchen extends CI_Controller
 			'nama' 		=> $this->input->post('nama'),
 			'status'	=> $this->input->post('status')
 		];
-		$this->Model_admin->update_toping($where, $data, 'tb_toping');
+		$this->Model_kasir->update_toping($where, $data, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
 		redirect('kitchen/c_kitchen/data_toping');
 	}
@@ -464,7 +464,7 @@ class C_kitchen extends CI_Controller
 	public function delete_toping($id)
 	{
 		$where = ['id' => $id];
-		$this->Model_admin->delete_makanan($where, 'tb_toping');
+		$this->Model_kasir->delete_makanan($where, 'tb_toping');
 		$this->session->set_flashdata('pesan', 'Berhasil dihapus');
 		redirect('kitchen/c_kitchen/data_toping');
 	}
@@ -473,7 +473,7 @@ class C_kitchen extends CI_Controller
 	{
 		$where	= ["no_invoice" => $id];
 		$data	= ["status_pembuatan" => "Keluar"];
-		$this->Model_admin->update_pembuatan($where, 'tb_orders', $data);
+		$this->Model_kasir->update_pembuatan($where, 'tb_orders', $data);
 		$this->session->set_flashdata('pesan', 'Berhasil diupdate');
 		redirect('kitchen/c_kitchen/data_pesanan');
 	}
