@@ -362,7 +362,7 @@ class C_pemilik extends CI_Controller
 			$row[] = $item->meja;
 			$row[] = '<span class="btn btn-sm ' . $btn_collor . '">' . $item->status_pesanan . '</span>';
 			$row[] = '
-            <a href="' . base_url('pemilik/c_pemilik/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-dollar-sign"></i></a>
+            <a href="' . base_url('pemilik/c_pemilik/detail_pesanan/' . $item->no_invoice) . '" class="btn btn-sm btn-info mr-2"><i class="fas fa-info"></i></a>
             <a href="' . base_url('pemilik/c_pemilik/print/' . $item->no_invoice) . '" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
             ';
 			$data[] = $row;
@@ -385,15 +385,15 @@ class C_pemilik extends CI_Controller
 		$this->load->view('pemilik/v_detail_pesanan', $data);
 	}
 
-	public function submit_payment($id)
-	{
-		$data = ['status_pesanan' => "Lunas"];
-		$where = ['no_invoice' => $id];
+	// public function submit_payment($id)
+	// {
+	// 	$data = ['status_pesanan' => "Lunas"];
+	// 	$where = ['no_invoice' => $id];
 
-		$this->Model_kasir->submit_payment($where, $data, 'tb_orders');
-		$this->session->set_flashdata('pesan', 'Pembayaran telah dilakukan');
-		redirect('pemilik/c_pemilik/data_pesanan');
-	}
+	// 	$this->Model_kasir->submit_payment($where, $data, 'tb_orders');
+	// 	$this->session->set_flashdata('pesan', 'Pembayaran telah dilakukan');
+	// 	redirect('pemilik/c_pemilik/data_pesanan');
+	// }
 
 	public function print($id)
 	{

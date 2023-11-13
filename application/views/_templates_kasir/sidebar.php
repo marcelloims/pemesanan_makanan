@@ -49,7 +49,7 @@
 						<i class="far fa-circle nav-icon"></i>
 						<p>Print QR Menu</p>
 					</a>
-					<ul class="nav nav-treeview">
+					<!-- <ul class="nav nav-treeview">
 						<li class="nav-item">
 							<a href="<?= base_url() ?>kasir/c_kasir/dashboard" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
@@ -86,7 +86,7 @@
 								<p>Print QR Menu</p>
 							</a>
 						</li>
-					</ul>
+					</ul> -->
 				</li>
 			</ul>
 		</nav>

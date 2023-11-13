@@ -35,12 +35,6 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <div class="callout callout-info">
-                                <h5><i class="fas fa-info"></i> Note:</h5>
-                                Tekan Print untuk mencetak invoice dan Pastikan uang yang di sesuai
-                            </div>
-
-
                             <!-- Main content -->
                             <div class="invoice p-3 mb-3">
                                 <!-- info row -->
@@ -153,10 +147,10 @@
                                 <div class="row no-print">
                                     <div class="col-12">
 
-                                        <?php if ($detail['status_pesanan'] == "Dalam Proses") : ?>
+                                        <!-- <?php if ($detail['status_pesanan'] == "Dalam Proses") : ?>
                                             <a href="<?= base_url('pemilik/c_pemilik/submit_payment/' . $detail['no_invoice']) ?>" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                                                 Payment</a>
-                                        <?php endif; ?>
+                                        <?php endif; ?> -->
                                     </div>
                                 </div>
                             </div>
