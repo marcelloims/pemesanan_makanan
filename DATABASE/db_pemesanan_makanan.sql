@@ -140,7 +140,7 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id_user`, `email`, `username`, `password`, `role_id`) VALUES
-(1, 'admin@gmail.com', 'admin', 'admin', 1),
+(1, 'kasir@gmail.com', 'kasir', 'kasir', 1),
 (3, 'kitchen@gmail.com', 'kitchen', 'kitchen', 3),
 (4, 'pemilik@gmail.com', 'pemilik', 'pemilik', 4);
 

@@ -2,18 +2,18 @@
 <html>
 
 <head>
-	<?php $this->load->view('_templates_admin/header'); ?>
+	<?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
 		<!-- Navbar -->
-		<?php $this->load->view('_templates_admin/navbar'); ?>
+		<?php $this->load->view('_templates_kasir/navbar'); ?>
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<?php $this->load->view('_templates_admin/sidebar'); ?>
+		<?php $this->load->view('_templates_kasir/sidebar'); ?>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -49,7 +49,7 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form action="<?= base_url() ?>admin/c_admin/tambah_toping" id="form" method="POST" enctype="multipart/form-data">
+								<form action="<?= base_url() ?>kasir/c_kasir/tambah_toping" id="form" method="POST" enctype="multipart/form-data">
 									<div class="modal-body">
 										<div class="form-group">
 											<label for="">Nama Toping</label>
@@ -81,8 +81,8 @@
 									<th scope="row"><?= $no++ ?></th>
 									<td align="center"><?= $top->nama ?></td>
 									<!-- <td width="150px" align="center">
-										<a href="<?= base_url('admin/c_admin/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-										<a href="<?= base_url('admin/c_admin/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
+										<a href="<?= base_url('kasir/c_kasir/edit_toping/' . $top->id) ?>" class=" btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+										<a href="<?= base_url('kasir/c_kasir/delete_toping/' . $top->id) ?>" class=" btn btn-sm btn-danger tombol-hapus"><i class="fas fa-trash"></i></a>
 									</td> -->
 								</tr>
 							<?php endforeach; ?>
@@ -94,16 +94,16 @@
 		</div>
 
 	<!--Footer -->
-	  	<?php $this->load->view('_templates_admin/footer'); ?>
+	  	<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!-- Footer -->
 		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_admin/control-sidebar') ?>
+		<?php $this->load->view('_templates_kasir/control-sidebar') ?>
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
 
 	<!-- jQuery -->
-	<?php $this->load->view('_templates_admin/js'); ?>
+	<?php $this->load->view('_templates_kasir/js'); ?>
 	<script>
 		$(function() {
 			$("#example1").DataTable({

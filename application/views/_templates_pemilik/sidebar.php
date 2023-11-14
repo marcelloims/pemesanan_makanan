@@ -45,48 +45,10 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url() ?>pemilik/c_pemilik/laporan" <?= $this->uri->segment(3) ==  'viewQR' ? 'class="nav-link active"': '' ?> class="nav-link">
+					<a href="<?= base_url() ?>pemilik/c_pemilik/laporan" <?= $this->uri->segment(3) ==  'laporan' ? 'class="nav-link active"': '' ?> class="nav-link">
 						<i class="far fa-circle nav-icon"></i>
 						<p>Laporan</p>
 					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/dashboard" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Dashboard</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/data_makanan" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Data Makanan</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/data_minuman" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Data Minuman</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/data_toping" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Data Toping</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/data_pesanan" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Data Pesanan</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url() ?>pemilik/c_pemilik/laporan" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Laporan</p>
-							</a>
-						</li>
-					</ul>
 				</li>
 			</ul>
 		</nav>

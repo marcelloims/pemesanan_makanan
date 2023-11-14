@@ -2,18 +2,18 @@
 <html>
 
 <head>
-	<?php $this->load->view('_templates_admin/header'); ?>
+	<?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
 		<!-- Navbar -->
-		<?php $this->load->view('_templates_admin/navbar'); ?>
+		<?php $this->load->view('_templates_kasir/navbar'); ?>
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<?php $this->load->view('_templates_admin/sidebar'); ?>
+		<?php $this->load->view('_templates_kasir/sidebar'); ?>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -35,10 +35,10 @@
 					<div class="row">
 						<div class="col-3">
 							<?php $code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan'; ?>
-							<img src="<?= site_url('admin/c_admin/qrcode') ?>" alt="QR-Code" class="">
+							<img src="<?= site_url('kasir/c_kasir/qrcode') ?>" alt="QR-Code" class="">
 						</div>
 						<div class="col-2 ml-5">
-							<a href="<?= base_url('admin/c_admin/printQR') ?>" class="btn btn-primary">Print</a>
+							<a href="<?= base_url('kasir/c_kasir/printQR') ?>" class="btn btn-primary">Print</a>
 						</div>
 					</div>
 				</div>
@@ -47,17 +47,17 @@
 		</div>
 
 		<!-- Control Sidebar -->
-		<?php $this->load->view('_templates_admin/control-sidebar') ?>
+		<?php $this->load->view('_templates_kasir/control-sidebar') ?>
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
 
 	<!--Footer start -->
-		<?php $this->load->view('_templates_admin/footer'); ?>
+		<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!--Footer end -->
 
 	<!-- jQuery -->
-	<?php $this->load->view('_templates_admin/js'); ?>
+	<?php $this->load->view('_templates_kasir/js'); ?>
 	<script type="text/javascript">
 		function onScanSuccess() {
 			window.location = '<?= base_url('pelanggan/c_pelanggan/data_makanan') ?>';

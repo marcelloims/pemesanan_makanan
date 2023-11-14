@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-12">
 			<?php $code = 'http://localhost:8080/pemesanan_makanan/pelanggan/c_pelanggan/data_makanan'; ?>
-			<img src="<?= site_url('admin/c_admin/qrcode') ?>" alt="QR-Code" class="">
+			<img src="<?= site_url('kasir/c_kasir/qrcode') ?>" alt="QR-Code" class="">
 		</div>
 	</div>
 

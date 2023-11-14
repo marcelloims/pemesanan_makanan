@@ -1,6 +1,6 @@
 <?php
 
-class Model_admin extends CI_Model
+class Model_kasir extends CI_Model
 {
 
 	public function data_makanan()

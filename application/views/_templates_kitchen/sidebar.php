@@ -44,7 +44,7 @@
 						<p>Data Pesanan</p>
 					</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<!-- <a href="<?= base_url() ?>kitchen/c_kitchen/viewQR" <?= $this->uri->segment(3) ==  'viewQR' ? 'class="nav-link active"': '' ?> class="nav-link">
 						<i class="far fa-circle nav-icon"></i>
 						<p>Print QR Menu</p>
@@ -88,7 +88,7 @@
 							</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

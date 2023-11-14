@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <?php $this->load->view('_templates_admin/header'); ?>
+    <?php $this->load->view('_templates_kasir/header'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php $this->load->view('_templates_admin/navbar'); ?>
+        <?php $this->load->view('_templates_kasir/navbar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('_templates_admin/sidebar'); ?>
+        <?php $this->load->view('_templates_kasir/sidebar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -154,7 +154,7 @@
                                     <div class="col-12">
 
                                         <?php if ($detail['status_pesanan'] == "Dalam Proses") : ?>
-                                            <a href="<?= base_url('admin/c_admin/submit_payment/' . $detail['no_invoice']) ?>" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                                            <a href="<?= base_url('kasir/c_kasir/submit_payment/' . $detail['no_invoice']) ?>" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                                                 Payment</a>
                                         <?php endif; ?>
                                     </div>
@@ -170,17 +170,17 @@
         </div>
 
         <!-- Control Sidebar -->
-        <?php $this->load->view('_templates_admin/control-sidebar') ?>
+        <?php $this->load->view('_templates_kasir/control-sidebar') ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
 	<!--Footer start -->
-	<?php $this->load->view('_templates_admin/footer'); ?>
+	<?php $this->load->view('_templates_kasir/footer'); ?>
 	<!--Footer end -->
 
     <!-- jQuery -->
-    <?php $this->load->view('_templates_admin/js'); ?>
+    <?php $this->load->view('_templates_kasir/js'); ?>
     <!-- jQuery -->
 </body>
 
