@@ -28,6 +28,12 @@
 				</div>
 			</ul>
 		</ul>
-	</div>
+		<ul class="navbar-nav">
+			<div class="navbar">
+				<li class="nav-item" style="margin-left: 750px;">
+					<a href="<?= base_url('auth/c_auth/login')?>" class="btn btn-sm btn-primary">Login</a>
+				</li>
+			</div>
+		</ul>
 	</div>
 </nav>
